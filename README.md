@@ -9,7 +9,7 @@
 
 O **Kyng IA** é uma central interativa e assistente pessoal de treino desenvolvido sob medida para **Futuro Kyng** (`Boar1principeBR` / `IKV_PRINCIPE_REI` / `MUKA1998`).
 
-O sistema integra uma interface web responsiva (HTML/CSS/JS) alimentada pela API do Google Gemini para atuar como coach tático, analista de erros e guia de evolução contínua no Fortnite (Battle Royale e Reload).
+O sistema integra uma interface web responsiva (HTML/CSS/JS) alimentada pela API do Google Gemini (modelo **Gemini 2.5 Flash**) para atuar como coach tático, analista de erros e guia de evolução contínua no Fortnite (Battle Royale e Reload).
 
 ---
 
@@ -43,5 +43,5 @@ O sistema integra uma interface web responsiva (HTML/CSS/JS) alimentada pela API
 ## 📂 Estrutura do Repositório
 
 ```text
-├── index.html        # Aplicativo web completo (Chat IA com LocalStorage, Configs, Frases e Diário)
+├── index.html        # Aplicativo web completo (Chat IA Gemini 2.5 Flash, LocalStorage, Configs e Diário)
 └── README.md         # Documentação e instruções do projeto

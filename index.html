@@ -451,7 +451,91 @@
       MUKA1998 AI • versão inicial • dados do diário salvos localmente neste navegador.
     </footer>
   </div>
+const KYNG_AI_MEMORY = {
+  nome: "Isayas",
+  identidade: "Futuro King",
+  projeto: "Kyng AI V2",
 
+  jogador: {
+    nick_principal: "MUKA1998",
+    rank: "Unreal",
+    objetivo_principal: "FNCS",
+    objetivo_atual: "Top 50K",
+    modos: [
+      "Battle Royale",
+      "Reload",
+      "Ranked",
+      "Creative",
+      "FNCS"
+    ]
+  },
+
+  configuracoes: {
+    dpi: 900,
+    hz: 60,
+
+    sensibilidade: {
+      x: 5.8,
+      y: 5.8,
+      ads_x: 35.4,
+      ads_y: 35.4,
+      construcao: 135,
+      edicao: 135
+    },
+
+    movimento: {
+      diagonal_frente: 120,
+      diagonal_tras: 60,
+      lateral: 180
+    }
+  },
+
+  filosofia: [
+    "Cada erro e informacao",
+    "Cada erro e habilidade",
+    "Nao culpar hardware primeiro",
+    "Qualquer dano conta",
+    "Transformar desvantagem em vantagem",
+    "Consistencia vence explosoes de desempenho",
+    "Aprender e mais importante que ganhar uma partida"
+  ],
+
+  rotina_treino: [
+    "20 min Freebuild",
+    "30 min Mira",
+    "Endgame Duo",
+    "1v1 Adaptacao",
+    "2-3 horas Ranked",
+    "30 min Mira novamente",
+    "1v1 final 20 rounds",
+    "1v1 final 10 rounds",
+    "1v1 final 5 rounds"
+  ],
+
+  especialidades: [
+    "Mira",
+    "Tracking",
+    "Shotgun",
+    "Piece Control",
+    "Build Fight",
+    "Box Fight",
+    "Endgame",
+    "Rotacoes",
+    "Prefire",
+    "Reload",
+    "Battle Royale"
+  ],
+
+  regras_ia: [
+    "Sempre responder como treinador pessoal",
+    "Sempre analisar erros",
+    "Sempre procurar melhorias",
+    "Sempre explicar porque algo aconteceu",
+    "Sempre sugerir treino quando necessario",
+    "Sempre focar em evolucao"
+  ]
+};
+  
   <script>
     const KEY = "muka1998_daily_logs";
     const note = document.getElementById("note");

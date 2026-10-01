@@ -1,101 +1,49 @@
-# 👑 Kyng AI — Fortnite Coach
+# 👑 Kyng IA — Fortnite Coach & Central do Jogador
 
-> **“Cada erro é habilidade a mais. Cada erro é informação a mais.”**
-
-O **Kyng AI** é um projeto pessoal criado para acompanhar a evolução de **Isayas** no Fortnite e, no futuro, funcionar como um treinador pessoal de Fortnite.
-
-## 🎯 Objetivo
-
-Criar uma IA que conheça:
-
-- 🎮 Fortnite e suas mecânicas
-- 🎯 Mira, tracking e posicionamento
-- 🧩 Piece control
-- ✏️ Edição e construção
-- 🔫 Prefire e combate
-- 🧠 Tomada de decisão
-- 🏆 Ranked e competitivo
-- 🤝 Trabalho em dupla
-- 📈 Evolução e histórico do jogador
-
-## 👑 Jogador
-
-**Nome:** Isayas  
-**Nick principal:** 1principeBR  
-**Atual:** Boar1principeBR 
-**Modo:** Build / Reload Build  
-**Rank atual:** Unreal — #147.564  
-**Meta atual:** Top 50K
-
-## 🧠 Filosofia
-
-> **“Eu não corro atrás do título. Eu corro atrás da evolução. O título que corra atrás de mim.”**
-
-O projeto segue uma ideia simples:
-
-**Jogar → Errar → Identificar → Treinar → Testar → Adaptar → Evoluir**
-
-Uma vitória também gera informação.
-
-Uma derrota também gera informação.
-
-O objetivo não é ser perfeito.
-
-**O objetivo é continuar evoluindo.**
-
-## 🎯 Sistema de treino
-
-### Mira
-O erro escolhe o próximo treino.
-
-- Errou tracking → treinar tracking
-- Errou tiro de rifle → treinar rifle
-- Errou shotgun → treinar shotgun
-- Errou tiros de longe → treinar precisão
-- Errou enquanto se movimentava → treinar mira + movimento
-- Prefire piorou → treinar prefire
-
-### Mecânicas
-
-- Freebuild
-- Edit
-- Piece Control
-- Construção
-- 1v1
-- Endgame
-
-### Duo
-
-- Endgame contra aleatórios
-- Comunicação
-- 1v1
-- Adaptação
-- Revisão das partidas
-- Identificação dos erros
-
-## 📈 Evolução
-
-O Kyng AI deverá futuramente registrar:
-
-- Partidas
-- Erros
-- Melhorias
-- Treinos
-- Metas
-- Desempenho de mira
-- Tomada de decisão
-- Evolução ao longo dos meses
-
-## 🔥 Visão do projeto
-
-> **Boar1principeBR → evolução → evolução → evolução → MUKA1998**
-
-Não tentar parecer Rei antes da hora.
-
-**Construir o nível necessário para o nome falar por si.**
+> **Projeto Muka1998 — O Caminho Até o Trono**  
+> *"Eu não corro atrás do título. Eu corro atrás da evolução. O título que corra atrás de mim."*
 
 ---
 
-### 🇧🇷 Projeto pessoal de Isayas
+## 📌 Sobre o Projeto
 
-**Fortnite • Treino • Evolução • Competitivo • Kyng 👑**
+O **Kyng IA** é uma central interativa e assistente pessoal de treino desenvolvido sob medida para **Futuro Kyng** (`Boar1principeBR` / `IKV_PRINCIPE_REI` / `MUKA1998`). 
+
+O sistema integra uma interface web responsiva (em HTML/CSS/JS) com o modelo de inteligência artificial Gemini para atuar como um coach tático, analista de erros e guia de evolução contínua no Fortnite (Battle Royale e Reload).
+
+---
+
+## ⚙️ Perfil & Configurações do Jogador
+
+A IA está programada com o conhecimento exato de todo o hardware, periféricos e parâmetros de sensibilidade do jogador:
+
+| Categoria | Parâmetro | Valor / Configuração |
+| :--- | :--- | :--- |
+| **Mouse** | DPI | `900 DPI` |
+| **Sensibilidade** | Eixo X / Y | `5.8%` |
+| **Sensibilidade** | Mira ADS (Lentes) | `35.4%` |
+| **Construção & Edição** | Multiplicadores | `135%` (1.35x) |
+| **Diagonais de Movimento** | Correr / Atirar | `120°` |
+| **Diagonais de Movimento** | Andar para Frente | `60°` |
+| **Diagonais de Movimento** | Andar para Trás | `180°` |
+| **Exibição / Hardware** | Taxa de Atualização | `60 Hz` |
+| **Exibição / Hardware** | Dispositivo | TV com `381ms` de input lag |
+| **Adaptação Tática** | Compensação de Delay | Pré-fire, leitura antecipada de jogada e posicionamento relativo |
+
+---
+
+## 🧠 Mentalidade & Leis do Projeto Muka1998
+
+1. **Princípio Fundamental:** Não treinar para parecer bom, mas para se tornar bom. Cada erro é informação; cada informação é adaptação; cada adaptação é evolução.
+2. **Regra das Fights:** Levou dano? Não entrar em pânico. Identificar a origem, a posição, a prevenção e a recuperação sem dar desculpas.
+3. **Regra da Desvantagem:** 60Hz e o delay da TV não definem o limite de jogo. *"A desvantagem só vira uma prisão quando eu deixo ela decidir por mim."*
+4. **Regra do Duo:** *"Nós dois contra o problema"*. Revisão sem culpa e apoio mútuo.
+5. **Sistema de Correção por Erro:** O treino do dia é definido pelo erro cometido na sessão anterior (Tracking, Shotgun, Rifle de Caça, SMG, AR ou Mira em Movimento).
+
+---
+
+## 📂 Estrutura do Repositório
+
+```text
+├── index.html        # Aplicativo web completo (Chat IA, Configs, Frases e Diário)
+└── README.md         # Documentação e instruções do projeto

@@ -1,0 +1,143 @@
+const KYNG_AI_MEMORY = {
+
+  identidade: {
+    nome: "Isayas",
+    nickPrincipal: "Kyng do Futuro",
+    legado: "MUKA1998",
+    projeto: "KYNG AI V2",
+    objetivoFinal: "FNCS"
+  },
+
+  perfil: {
+    rankAtual: "Unreal",
+    metaAtual: "Top 50K",
+    modoPrincipal: "Reload",
+    modosSecundarios: [
+      "Battle Royale",
+      "Ranked",
+      "Creative",
+      "FNCS"
+    ]
+  },
+
+  setup: {
+    dpi: 900,
+    hz: 60,
+    dispositivo: "TV",
+
+    sensibilidade: {
+      x: 5.8,
+      y: 5.8,
+      adsX: 35.4,
+      adsY: 35.4,
+      construcao: 135,
+      edicao: 135
+    },
+
+    movimento: {
+      diagonalFrente: 120,
+      diagonalTras: 60,
+      lateral: 180
+    }
+  },
+
+  mentalidade: [
+    "Cada erro é informação",
+    "Cada erro é habilidade",
+    "Não culpar hardware primeiro",
+    "Qualquer dano conta",
+    "Transformar desvantagem em vantagem",
+    "Sempre revisar partidas",
+    "Consistência acima de tudo"
+  ],
+
+  treino: [
+    "20 min Freebuild",
+    "30 min Mira",
+    "Endgame Duo",
+    "1v1 Adaptação",
+    "2-3 horas Ranked",
+    "30 min Mira novamente",
+    "1v1 20 rounds",
+    "1v1 10 rounds",
+    "1v1 5 rounds"
+  ],
+
+  conhecimentos: [
+    "Battle Royale",
+    "Reload",
+    "Ranked",
+    "FNCS",
+    "Cash Cups",
+    "Build Fight",
+    "Box Fight",
+    "Piece Control",
+    "Prefire",
+    "Retakes",
+    "Endgame",
+    "Rotação",
+    "Drop Spots",
+    "Mira",
+    "Tracking",
+    "Shotgun",
+    "SMG",
+    "AR",
+    "Sniper"
+  ]
+};
+function responderKyngAI(pergunta){
+
+  pergunta = pergunta.toLowerCase();
+
+  if(pergunta.includes("sens")){
+    return `
+X/Y: 5.8
+ADS: 35.4
+Build: 135
+Edit: 135
+DPI: 900
+TV: 60Hz
+`;
+  }
+
+  if(pergunta.includes("meta")){
+    return `
+Meta atual:
+Top 50K.
+
+Objetivo final:
+FNCS.
+`;
+  }
+
+  if(pergunta.includes("treino")){
+    return `
+20 min Freebuild
+30 min Mira
+Endgame Duo
+1v1
+Ranked
+Mira novamente
+1v1 Final
+`;
+  }
+
+  return `
+Sou a KYNG AI V2.
+
+Nick principal: Kyng do Futuro.
+
+Funções:
+• Coach Fortnite
+• Coach Reload
+• Coach Battle Royale
+• Coach Ranked
+• Coach FNCS
+• Análise de erros
+• Treino de mira
+• Treino de mecânicas
+• Evolução competitiva
+
+Explique sua situação e analisarei.
+`;
+}

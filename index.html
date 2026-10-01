@@ -10,14 +10,12 @@
       --bg: #05070e;
       --panel: #0d1222;
       --panel-2: #131a30;
-      --panel-border: rgba(139, 92, 246, 0.2);
       --text: #f1f5f9;
       --muted: #94a3b8;
       --accent: #8b5cf6;
       --accent-hover: #7c3aed;
       --cyan: #06b6d4;
       --gold: #f59e0b;
-      --success: #10b981;
       --border: rgba(255, 255, 255, 0.08);
       --radius: 16px;
       --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
@@ -103,10 +101,7 @@
       transition: all 0.2s;
     }
 
-    .tab-btn:hover {
-      color: var(--text);
-    }
-
+    .tab-btn:hover { color: var(--text); }
     .tab-btn.active {
       background: var(--accent);
       color: white;
@@ -126,19 +121,16 @@
       animation: fadeIn 0.3s ease-in-out;
     }
 
-    .tab-content.active {
-      display: block;
-    }
+    .tab-content.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Layout Chat */
     .chat-layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 20px;
       height: calc(100vh - 140px);
     }
@@ -151,6 +143,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      overflow-y: auto;
     }
 
     .api-key-box {
@@ -174,9 +167,71 @@
       background: var(--panel-2);
       border: 1px solid var(--border);
       color: white;
-      padding: 8px;
+      padding: 10px;
       border-radius: 6px;
       font-size: 12px;
+    }
+
+    .history-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .history-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .saved-chats-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .chat-item-btn {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .chat-item-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-action {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn-action:hover {
+      background: var(--accent);
     }
 
     .chat-container {
@@ -242,9 +297,7 @@
       outline: none;
     }
 
-    .chat-input-area textarea:focus {
-      border-color: var(--accent);
-    }
+    .chat-input-area textarea:focus { border-color: var(--accent); }
 
     .btn-send {
       background: var(--accent);
@@ -257,11 +310,8 @@
       transition: background 0.2s;
     }
 
-    .btn-send:hover {
-      background: var(--accent-hover);
-    }
+    .btn-send:hover { background: var(--accent-hover); }
 
-    /* Cards Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -280,9 +330,6 @@
       font-size: 16px;
       color: var(--cyan);
       margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .stat-list {
@@ -318,7 +365,6 @@
       color: #e2e8f0;
     }
 
-    /* Diário Form */
     .diary-form {
       display: flex;
       flex-direction: column;
@@ -392,18 +438,30 @@
           <p style="font-size:12px; color:var(--muted)">Boar1principeBR / Futuro Kyng</p>
           
           <div class="api-key-box">
-            <label for="apiKey">Gemini API Key</label>
-            <input type="password" id="apiKey" placeholder="Cole sua API Key do Google..." onchange="saveApiKey()">
+            <label for="apiKey">Chave da API Gemini</label>
+            <input type="password" id="apiKey" placeholder="AQ.Ab8RN6L6nSppUvXaIZLR_xBnZSptiB5AQ3e3aRLZ-0YEHKDHQw" onchange="saveApiKey()" oninput="saveApiKey()">
+            <small style="font-size:10px; color:var(--gold); margin-top:4px; display:block;">Salva automaticamente no navegador.</small>
           </div>
 
-          <div style="font-size: 12px; color: var(--muted); margin-top: auto;">
-            <p>💡 <strong>Dica:</strong> A Kyng IA reconhece a sua sensibilidade, hardware e filosofia de treino do Projeto Muka1998 sem limites de conversa.</p>
+          <div class="history-box">
+            <div class="history-title">
+              <span>Conversas Salvas</span>
+              <button class="btn-action" style="width:auto; padding:3px 8px; font-size:10px;" onclick="saveCurrentChat()">💾 Salvar</button>
+            </div>
+            
+            <button class="btn-action" onclick="startNewChat()">➕ Nova Conversa</button>
+
+            <div id="savedChatsList" class="saved-chats-list"></div>
+          </div>
+
+          <div style="font-size: 11px; color: var(--muted); margin-top: auto;">
+            <p>💡 <strong>Status:</strong> IA programada com Sensibilidade (5.8), TV 60Hz (381ms), DPI 900 e Diagonais (120/60/180).</p>
           </div>
         </aside>
 
         <div class="chat-container">
           <div class="chat-messages" id="chatMessages">
-            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Estou 100% pronta com todas as suas configurações, sensibilidade, rotina de treino e metas do Fortnite (BR & Reload). Como vamos evoluir hoje?</div>
+            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" à esquerda. Suas conversas podem ser salvas para não perder nada do treino! Como vamos evoluir hoje?</div>
           </div>
           <div class="chat-input-area">
             <textarea id="chatInput" placeholder="Pergunte sobre táticas, missões, análises de erros ou metas..." onkeydown="handleKeyPress(event)"></textarea>
@@ -499,7 +557,6 @@
   </main>
 
   <script>
-    // System Prompt completo para a API
     const SYSTEM_PROMPT = `Você é a Kyng IA, o treinador pessoal definitivo do jogador Boar1principeBR (também conhecido como Futuro Kyng / IKV_PRINCIPE_REI / MUKA1998).
 Trate o usuário SEMPRE por "Futuro Kyng" ou "Boar1principeBR".
 
@@ -517,6 +574,10 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
 - Foco em análise pós-partida, comunicação inteligente com o duo ("Nós dois contra o problema"), e acompanhamento dos metas do Battle Royale, Reload, missões e mecânicas avançadas do Fortnite.
 - Responda sempre de forma motivadora, altamente tática e direta ao ponto.`;
 
+    let currentMessages = [
+      { role: 'assistant', text: 'Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" à esquerda. Suas conversas podem ser salvas para não perder nada do treino! Como vamos evoluir hoje?' }
+    ];
+
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -526,7 +587,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
     }
 
     function saveApiKey() {
-      const key = document.getElementById('apiKey').value;
+      const key = document.getElementById('apiKey').value.trim();
       localStorage.setItem('kyng_api_key', key);
     }
 
@@ -547,10 +608,13 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       if (!messageText) return;
 
       appendMessage('user', messageText);
+      currentMessages.push({ role: 'user', text: messageText });
       input.value = '';
 
       if (!apiKey) {
-        appendMessage('assistant', '⚠️ Por favor, insira sua chave da API Gemini na barra lateral para me ativar!');
+        const warning = '⚠️ Por favor, insira sua chave da API Gemini no campo "colo aqui a chave api"!';
+        appendMessage('assistant', warning);
+        currentMessages.push({ role: 'assistant', text: warning });
         return;
       }
 
@@ -568,16 +632,28 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
         });
 
         const data = await response.json();
-        document.getElementById(loadingId).remove();
+        const loadingElement = document.getElementById(loadingId);
+        if (loadingElement) loadingElement.remove();
 
-        if (data.candidates && data.candidates[0].content.parts[0].text) {
-          appendMessage('assistant', data.candidates[0].content.parts[0].text);
+        if (data.candidates && data.candidates[0] && data.candidates[0].content.parts[0].text) {
+          const aiReply = data.candidates[0].content.parts[0].text;
+          appendMessage('assistant', aiReply);
+          currentMessages.push({ role: 'assistant', text: aiReply });
+        } else if (data.error) {
+          const errReply = '❌ Erro da API: ' + (data.error.message || 'Verifique se sua chave está correta.');
+          appendMessage('assistant', errReply);
+          currentMessages.push({ role: 'assistant', text: errReply });
         } else {
-          appendMessage('assistant', '❌ Erro ao processar resposta. Verifique sua API Key.');
+          const errReply = '❌ Erro ao processar resposta. Verifique sua chave de API.';
+          appendMessage('assistant', errReply);
+          currentMessages.push({ role: 'assistant', text: errReply });
         }
       } catch (err) {
-        if(document.getElementById(loadingId)) document.getElementById(loadingId).remove();
-        appendMessage('assistant', '❌ Erro de conexão com a API.');
+        const loadingElement = document.getElementById(loadingId);
+        if (loadingElement) loadingElement.remove();
+        const errReply = '❌ Erro de conexão com a API.';
+        appendMessage('assistant', errReply);
+        currentMessages.push({ role: 'assistant', text: errReply });
       }
     }
 
@@ -593,7 +669,71 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       return id;
     }
 
-    // Lógica do Diário
+    // --- SISTEMA DE SALVAR E CARREGAR CONVERSAS ---
+    function saveCurrentChat() {
+      if (currentMessages.length <= 1) return;
+      
+      const chats = JSON.parse(localStorage.getItem('kyng_saved_chats') || '[]');
+      const date = new Date().toLocaleString('pt-BR');
+      const firstUserMsg = currentMessages.find(m => m.role === 'user')?.text.slice(0, 20) || 'Treino';
+      
+      chats.unshift({
+        id: Date.now(),
+        title: `${date} - ${firstUserMsg}...`,
+        messages: currentMessages
+      });
+
+      localStorage.setItem('kyng_saved_chats', JSON.stringify(chats));
+      renderSavedChats();
+      alert('Conversa salva com sucesso!');
+    }
+
+    function renderSavedChats() {
+      const chats = JSON.parse(localStorage.getItem('kyng_saved_chats') || '[]');
+      const container = document.getElementById('savedChatsList');
+      
+      if (chats.length === 0) {
+        container.innerHTML = '<span style="font-size:10px; color:var(--muted)">Nenhuma conversa salva.</span>';
+        return;
+      }
+
+      container.innerHTML = chats.map((c, index) => `
+        <div class="chat-item-btn" onclick="loadChat(${c.id})">
+          <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${c.title}</span>
+          <span onclick="deleteChat(event, ${c.id})" style="color:red; font-weight:bold; padding:2px 6px;">×</span>
+        </div>
+      `).join('');
+    }
+
+    function loadChat(id) {
+      const chats = JSON.parse(localStorage.getItem('kyng_saved_chats') || '[]');
+      const target = chats.find(c => c.id === id);
+      if (!target) return;
+
+      currentMessages = target.messages;
+      const chatMessages = document.getElementById('chatMessages');
+      chatMessages.innerHTML = '';
+      currentMessages.forEach(m => appendMessage(m.role, m.text));
+    }
+
+    function deleteChat(e, id) {
+      e.stopPropagation();
+      let chats = JSON.parse(localStorage.getItem('kyng_saved_chats') || '[]');
+      chats = chats.filter(c => c.id !== id);
+      localStorage.setItem('kyng_saved_chats', JSON.stringify(chats));
+      renderSavedChats();
+    }
+
+    function startNewChat() {
+      currentMessages = [
+        { role: 'assistant', text: 'Nova sessão iniciada, Futuro Kyng! Qual o foco do treino agora?' }
+      ];
+      const chatMessages = document.getElementById('chatMessages');
+      chatMessages.innerHTML = '';
+      appendMessage('assistant', currentMessages[0].text);
+    }
+
+    // --- DIÁRIO ---
     function saveDiary() {
       const text = document.getElementById('diaryInput').value.trim();
       if (!text) return;
@@ -616,6 +756,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       `).join('');
     }
 
+    renderSavedChats();
     renderDiary();
   </script>
 </body>

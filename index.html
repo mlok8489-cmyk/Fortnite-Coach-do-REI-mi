@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Kyng IA — Fortnite Coach (Projeto Muka1998)</title>
+  <meta name="description" content="Kyng IA — Treinador Pessoal de Fortnite do Futuro Kyng / Boar1principeBR.">
+  <title>Kyng IA — Fortnite Coach</title>
   <style>
     :root {
       --bg: #05070e;
@@ -38,7 +36,7 @@
     }
 
     header {
-      background: rgba(13, 18, 34, 0.85);
+      background: rgba(13, 18, 34, 0.8);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 16px 24px;
@@ -70,6 +68,7 @@
     .brand h1 {
       font-size: 20px;
       font-weight: 800;
+      letter-spacing: 0.5px;
       background: linear-gradient(to right, #fff, var(--muted));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -148,7 +147,7 @@
     }
 
     .api-key-box {
-      background: rgba(0,0,0,0.25);
+      background: rgba(0,0,0,0.2);
       padding: 12px;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -157,7 +156,7 @@
     .api-key-box label {
       display: block;
       font-size: 11px;
-      color: var(--cyan);
+      color: var(--muted);
       margin-bottom: 6px;
       text-transform: uppercase;
       font-weight: 700;
@@ -171,11 +170,6 @@
       padding: 10px;
       border-radius: 6px;
       font-size: 12px;
-      outline: none;
-    }
-
-    .api-key-box input:focus {
-      border-color: var(--accent);
     }
 
     .history-box {
@@ -199,7 +193,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      max-height: 200px;
+      max-height: 220px;
       overflow-y: auto;
     }
 
@@ -210,6 +204,7 @@
       padding: 8px 10px;
       border-radius: 8px;
       font-size: 12px;
+      text-align: left;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -235,7 +230,9 @@
       width: 100%;
     }
 
-    .btn-action:hover { background: var(--accent); }
+    .btn-action:hover {
+      background: var(--accent);
+    }
 
     .chat-container {
       background: var(--panel);
@@ -426,7 +423,7 @@
     </div>
     <nav>
       <button class="tab-btn active" onclick="switchTab('chat')">💬 Chat IA</button>
-      <button class="tab-btn" onclick="switchTab('configs')">⚙️ Configs</button>
+      <button class="tab-btn" onclick="switchTab('configs')">⚙️ Configs & Binds</button>
       <button class="tab-btn" onclick="switchTab('phrases')">📜 Frases & Leis</button>
       <button class="tab-btn" onclick="switchTab('train')">🏋️ Treinos & Diário</button>
     </nav>
@@ -442,9 +439,8 @@
           
           <div class="api-key-box">
             <label for="apiKey">Chave da API Gemini</label>
-            <!-- CAMPO PARA COLARES A CHAVE API -->
-            <input type="password" id="apiKey" placeholder="colo aqui a chave api" onchange="saveApiKey()" oninput="saveApiKey()">
-            <small style="font-size:10px; color:var(--gold); margin-top:4px; display:block;">Salva automaticamente no seu navegador.</small>
+            <input type="password" id="apiKey" placeholder="AQ.Ab8RN6LBEo2cn2pVq-x8f43O8EYhb9NFsIf1zUaM_HVN41DeEA" onchange="saveApiKey()" oninput="saveApiKey()">
+            <small style="font-size:10px; color:var(--gold); margin-top:4px; display:block;">Salva automaticamente no navegador.</small>
           </div>
 
           <div class="history-box">
@@ -459,51 +455,58 @@
           </div>
 
           <div style="font-size: 11px; color: var(--muted); margin-top: auto;">
-            <p>💡 <strong>Status:</strong> Sensibilidade (5.8), TV 60Hz (381ms), DPI 900 e Diagonais (120/60/180).</p>
+            <p>💡 <strong>Status:</strong> IA configurada com Binds (Q/E/R/Mouse), Edição (X/H), Sensibilidade (5.8%), TV 60Hz (381ms) e Diagonais (120/60/180).</p>
           </div>
         </aside>
 
         <div class="chat-container">
           <div class="chat-messages" id="chatMessages">
-            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" no painel à esquerda. Como vamos evoluir o treino hoje?</div>
+            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Binds de construção (Q/E/R/Mouse) e teclas de edição (X/H) atualizadas com sucesso! Cole sua chave de API à esquerda para começarmos. Como vamos evoluir hoje?</div>
           </div>
           <div class="chat-input-area">
-            <textarea id="chatInput" placeholder="Pergunte sobre táticas, missões, análises de erros ou metas..." onkeydown="handleKeyPress(event)"></textarea>
+            <textarea id="chatInput" placeholder="Pergunte sobre táticas, mecânicas, análise de erros ou rotinas..." onkeydown="handleKeyPress(event)"></textarea>
             <button class="btn-send" onclick="sendMessage()">Enviar</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABA CONFIGS -->
+    <!-- ABA CONFIGS & BINDS -->
     <section id="tab-configs" class="tab-content">
       <div class="grid">
         <article class="card">
-          <h3>🎯 Sensibilidade & Mouse</h3>
+          <h3>🧱 Binds de Construção & Edição</h3>
           <div class="stat-list">
-            <div class="stat-item"><span>Sensibilidade X / Y</span><span>5.8%</span></div>
-            <div class="stat-item"><span>Mira ADS (Lentes)</span><span>35.4%</span></div>
-            <div class="stat-item"><span>Modo Construção</span><span>135% (1.35x)</span></div>
-            <div class="stat-item"><span>Modo Edição</span><span>135% (1.35x)</span></div>
-            <div class="stat-item"><span>DPI do Mouse</span><span>900 DPI</span></div>
+            <div class="stat-item"><span>Edição de Construção</span><span>X / H</span></div>
+            <div class="stat-item"><span>Parede</span><span>Q</span></div>
+            <div class="stat-item"><span>Piso</span><span>E</span></div>
+            <div class="stat-item"><span>Escada</span><span>R</span></div>
+            <div class="stat-item"><span>Telhado (Cone)</span><span>Botão Lateral Rato</span></div>
+            <div class="stat-item"><span>Girar Construção</span><span>F</span></div>
+            <div class="stat-item"><span>Colocar Construção</span><span>Botão Esquerdo Rato</span></div>
           </div>
         </article>
 
         <article class="card">
-          <h3>🖥️ Hardware & Exibição</h3>
+          <h3>🎯 Sensibilidade & Mouse</h3>
           <div class="stat-list">
-            <div class="stat-item"><span>Taxa de Atualização</span><span>60 Hz</span></div>
-            <div class="stat-item"><span>Dispositivo</span><span>TV (381ms Delay)</span></div>
-            <div class="stat-item"><span>Estratégia Hardware</span><span>Pré-fire & Antecipação</span></div>
+            <div class="stat-item"><span>Sensibilidade X / Y</span><span>5,8%</span></div>
+            <div class="stat-item"><span>Mira ADS / Lentes</span><span>35,0% / 35,4%</span></div>
+            <div class="stat-item"><span>Modo Construção</span><span>135% (1.35x)</span></div>
+            <div class="stat-item"><span>Modo Edição</span><span>135% (1.35x)</span></div>
+            <div class="stat-item"><span>Primeira Pessoa</span><span>500%</span></div>
+            <div class="stat-item"><span>DPI do Mouse</span><span>900 DPI</span></div>
           </div>
         </article>
 
         <article class="card">
           <h3>🕹️ Diagonais & Movimentação</h3>
           <div class="stat-list">
+            <div class="stat-item"><span>Diagonais Personalizadas</span><span>Ligado</span></div>
+            <div class="stat-item"><span>Ângulo para Frente</span><span>60°</span></div>
             <div class="stat-item"><span>Correr / Atirar</span><span>120°</span></div>
-            <div class="stat-item"><span>Andar para Frente</span><span>60°</span></div>
-            <div class="stat-item"><span>Andar para Trás</span><span>180°</span></div>
+            <div class="stat-item"><span>Ângulo para Trás</span><span>180°</span></div>
+            <div class="stat-item"><span>Hardware / Exibição</span><span>TV 60Hz (381ms)</span></div>
           </div>
         </article>
       </div>
@@ -542,8 +545,8 @@
           <div class="stat-list">
             <div class="stat-item"><span>Errou Tracking?</span><span>Treinar Acompanhamento</span></div>
             <div class="stat-item"><span>Errou Doze?</span><span>Flicks & Crosshair Placement</span></div>
-            <div class="stat-item"><span>Errou Rifle de Caça?</span><span>Timing & Precisão</span></div>
-            <div class="stat-item"><span>Errou Movimentando?</span><span>Mira + Movimento Ativo</span></div>
+            <div class="stat-item"><span>Errou Edição (X/H)?</span><span>Treino de Timing & Posição</span></div>
+            <div class="stat-item"><span>Errou Movimentando?</span><span>Aproveitar Diagonais (120/60/180)</span></div>
           </div>
         </article>
 
@@ -551,7 +554,7 @@
           <h3>📝 Diário de Evolução</h3>
           <p style="font-size:12px; color:var(--muted)">Registre o maior erro ou aprendizado da sessão:</p>
           <div class="diary-form">
-            <textarea id="diaryInput" placeholder="Ex: Tomei dano ao entrar na box sem vantagem. Amanhã vou focar em segurar a parede e usar peek direito."></textarea>
+            <textarea id="diaryInput" placeholder="Ex: Errei a edição no X ao tentar dar piece control. Amanhã focar no timing do Q+E+X."></textarea>
             <button class="btn-send" style="padding: 10px;" onclick="saveDiary()">Salvar Registro</button>
           </div>
           <div id="diaryLogs" class="diary-logs"></div>
@@ -564,13 +567,15 @@
     const SYSTEM_PROMPT = `Você é a Kyng IA, o treinador pessoal definitivo do jogador Boar1principeBR (também conhecido como Futuro Kyng / IKV_PRINCIPE_REI / MUKA1998).
 Trate o usuário SEMPRE por "Futuro Kyng" ou "Boar1principeBR".
 
-CONFIGURAÇÕES DO JOGADOR:
-- Sensibilidade X/Y: 5.8
-- Mira ADS: 35.4
-- Construção e Edição: 135 (1.35x / 135%)
-- Mouse: 900 DPI
-- Hardware: TV de 60Hz com 381ms de input lag/delay. Oriente-o a jogar com pré-fire, antecipação e leitura de jogo para neutralizar esse delay.
-- Configuração de Diagonais: Correr/Atirar: 120, Andar p/ frente: 60, Andar p/ trás: 180.
+CONFIGURAÇÕES E BINDS TÁTICAS DO JOGADOR:
+- Sensibilidade X/Y: 5.8%
+- Sensibilidade ADS / Mira: 35.0% / 35.4%
+- Construção e Edição: 135% (1.35x)
+- DPI do Mouse: 900 DPI
+- Edição de Construção: Teclas X e H
+- Binds de Construção: Parede (Q), Piso (E), Escada (R), Telhado/Cone (Botão Lateral do Rato), Girar (F), Colocar Construção (Botão Esquerdo do Rato)
+- Diagonais Personalizadas: Frente (60°), Correr/Atirar (120°), Trás (180°)
+- Hardware: TV de 60Hz com 381ms de input lag/delay. Oriente-o a jogar com pré-fire, antecipação, controle de peças (piece control) e leitura de jogo para neutralizar esse delay.
 
 CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
 - "Não treino para parecer bom, treino para me tornar bom."
@@ -579,7 +584,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
 - Responda sempre de forma motivadora, altamente tática e direta ao ponto.`;
 
     let currentMessages = [
-      { role: 'assistant', text: 'Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" no painel à esquerda. Suas conversas podem ser salvas para não perder nada do treino! Como vamos evoluir hoje?' }
+      { role: 'assistant', text: 'Salve, Futuro Kyng! Sou a Kyng IA. Binds de construção (Q/E/R/Mouse) e teclas de edição (X/H) atualizadas com sucesso! Cole sua chave de API à esquerda para começarmos. Como vamos evoluir hoje?' }
     ];
 
     function switchTab(tabId) {
@@ -616,7 +621,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       input.value = '';
 
       if (!apiKey) {
-        const warning = '⚠️ Por favor, insira sua chave da API Gemini no campo "AQ.Ab8RN6Km3uUynl9Os8abSEftFX8AICI9onzk9RIhcXh8Y13SYQ"!';
+        const warning = '⚠️ Por favor, insira sua chave da API Gemini no campo "colo aqui a chave api"!';
         appendMessage('assistant', warning);
         currentMessages.push({ role: 'assistant', text: warning });
         return;
@@ -673,7 +678,6 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       return id;
     }
 
-    // --- SISTEMA DE SALVAR E CARREGAR CONVERSAS ---
     function saveCurrentChat() {
       if (currentMessages.length <= 1) return;
       
@@ -737,7 +741,6 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       appendMessage('assistant', currentMessages[0].text);
     }
 
-    // --- DIÁRIO ---
     function saveDiary() {
       const text = document.getElementById('diaryInput').value.trim();
       if (!text) return;

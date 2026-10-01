@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MUKA1998 AI — treinador pessoal de Fortnite do Isayas.">
+  <title>MUKA1998 AI — Fortnite Coach</title>
+  <style>
+    :root {
+      --bg: #070914;
+      --panel: #101526;
+      --panel-2: #151d33;
+      --text: #f4f7ff;
+      --muted: #9aa7c2;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --success: #34d399;
+      --danger: #fb7185;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 20px 60px rgba(0,0,0,.28);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(139,92,246,.18), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(34,211,238,.12), transparent 24%),
+        linear-gradient(160deg, #060811 0%, #0a0e1d 55%, #070914 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .crown {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(139,92,246,.35), rgba(34,211,238,.22));
+      border: 1px solid var(--border);
+      font-size: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: .4px;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .status {
+      color: var(--success);
+      border: 1px solid rgba(52,211,153,.2);
+      background: rgba(52,211,153,.08);
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      margin: 18px 0 24px;
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(139,92,246,.16), rgba(16,21,38,.92) 52%, rgba(34,211,238,.09));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .hero h2 {
+      margin: 10px 0 10px;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: .98;
+      max-width: 800px;
+    }
+
+    .hero h2 span {
+      background: linear-gradient(90deg, #fff, #b8c7ff 45%, #7dd3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .quote {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(0,0,0,.16);
+      color: #e7ebf8;
+      border-radius: 0 14px 14px 0;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      grid-column: span 4;
+      background: rgba(16,21,38,.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .card.wide { grid-column: span 8; }
+    .card.full { grid-column: 1 / -1; }
+
+    .card h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+
+    .card .sub {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .stat {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stat strong {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .stat small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: #dce3f6;
+      font-size: 12px;
+    }
+
+    .routine {
+      display: grid;
+      gap: 9px;
+    }
+
+    .routine-row {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 12px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .time {
+      color: var(--accent-2);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .routine-row span:last-child {
+      color: #dce3f6;
+      font-size: 13px;
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    textarea, input, button {
+      font: inherit;
+    }
+
+    textarea, input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #0b1020;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 12px;
+      outline: none;
+    }
+
+    textarea:focus, input:focus {
+      border-color: rgba(139,92,246,.65);
+      box-shadow: 0 0 0 3px rgba(139,92,246,.1);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 11px 14px;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), #6d28d9);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .log-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .log-item {
+      padding: 11px 12px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .log-item strong { font-size: 13px; }
+    .log-item small { color: var(--muted); display: block; margin-top: 3px; }
+
+    footer {
+      padding: 18px 0 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .card, .card.wide { grid-column: 1 / -1; }
+      .hero { padding: 24px; }
+      header { align-items: flex-start; }
+      .notes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="crown">👑</div>
+        <div>
+          <h1>MUKA1998 AI</h1>
+          <p>Fortnite Coach • Isayas</p>
+        </div>
+      </div>
+      <div class="status">● Coach online</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Projeto Futuro King</div>
+        <h2><span>Não correr atrás do título.</span><br>Construir o nível.</h2>
+        <p>
+          Um painel pessoal para registrar treino, erros, decisões, evolução de mira
+          e progresso competitivo — com foco em transformar cada partida em informação.
+        </p>
+        <div class="quote">
+          “Cada erro é habilidade a mais. Cada erro é informação a mais.”
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h3>Perfil competitivo</h3>
+          <p class="sub">Estado atual</p>
+          <div class="stat">
+            <strong>Unreal</strong>
+            <small>#147.564</small>
+          </div>
+          <div class="chips" style="margin-top:14px">
+            <span class="chip">Build</span>
+            <span class="chip">Reload</span>
+            <span class="chip">60 Hz</span>
+            <span class="chip">1000 DPI</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Meta atual</h3>
+          <p class="sub">Próximo marco</p>
+          <div class="stat">
+            <strong>Top 50K</strong>
+            <small>e continuar subindo</small>
+          </div>
+          <div class="chips" style="margin-top:14px">
+            <span class="chip">Consistência</span>
+            <span class="chip">Decisão</span>
+            <span class="chip">Mira</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Identidade</h3>
+          <p class="sub">Nomes e legado</p>
+          <div class="chips">
+            <span class="chip">MUKA1998</span>
+            <span class="chip">IKV_PRINCIPE_REI</span>
+            <span class="chip">Boar1PrincipeBR</span>
+          </div>
+        </article>
+
+        <article class="card wide">
+          <h3>Rotina principal</h3>
+          <p class="sub">Plano de treino pessoal</p>
+          <div class="routine">
+            <div class="routine-row"><span class="time">20 min</span><span>Freebuild • mecânicas e aquecimento</span></div>
+            <div class="routine-row"><span class="time">30 min</span><span>Mira • tracking + posicionamento</span></div>
+            <div class="routine-row"><span class="time">DUO</span><span>Endgame contra aleatórios</span></div>
+            <div class="routine-row"><span class="time">1v1</span><span>Adaptação, leitura e mecânicas</span></div>
+            <div class="routine-row"><span class="time">2–3 h</span><span>Ranked • aplicar tudo na prática</span></div>
+            <div class="routine-row"><span class="time">30 min</span><span>Mira novamente • corrigir o erro do dia</span></div>
+            <div class="routine-row"><span class="time">FINAL</span><span>1v1 • 20 rounds → 10 → 5</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Treino adaptativo de mira</h3>
+          <p class="sub">O erro escolhe o próximo exercício.</p>
+          <div class="chips">
+            <span class="chip">Errou tracking → Tracking</span>
+            <span class="chip">Errou rifle → Rifle</span>
+            <span class="chip">Errou doze → Shotgun</span>
+            <span class="chip">Errou longe → Precisão</span>
+            <span class="chip">Errou movimento → Mira + movimento</span>
+            <span class="chip">Prefire caiu → Prefire</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Regras mentais</h3>
+          <p class="sub">Antes de culpar qualquer coisa</p>
+          <div class="chips">
+            <span class="chip">O que aconteceu?</span>
+            <span class="chip">Por que aconteceu?</span>
+            <span class="chip">O que controlo?</span>
+            <span class="chip">O que testo na próxima?</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Dupla</h3>
+          <p class="sub">Eu + meu duo</p>
+          <div class="chips">
+            <span class="chip">Comunicação</span>
+            <span class="chip">Calma</span>
+            <span class="chip">Review sem culpa</span>
+            <span class="chip">Nós contra o problema</span>
+          </div>
+        </article>
+
+        <article class="card full">
+          <h3>Diário de evolução</h3>
+          <p class="sub">Registre uma descoberta da sessão. Ela fica salva neste navegador.</p>
+
+          <label for="note" style="font-size:12px;color:var(--muted)">O que aprendi hoje?</label>
+          <div class="notes">
+            <textarea id="note" placeholder="Ex.: Tomei dano porque entrei sem vantagem. Na próxima vou esperar o ângulo e sair se a troca não render."></textarea>
+            <button id="saveBtn">Salvar descoberta</button>
+          </div>
+
+          <div class="actions">
+            <button class="secondary" id="clearBtn">Limpar histórico</button>
+          </div>
+
+          <div id="logs" class="log-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      MUKA1998 AI • versão inicial • dados do diário salvos localmente neste navegador.
+    </footer>
+  </div>
+
+  <script>
+    const KEY = "muka1998_daily_logs";
+    const note = document.getElementById("note");
+    const logs = document.getElementById("logs");
+    const saveBtn = document.getElementById("saveBtn");
+    const clearBtn = document.getElementById("clearBtn");
+
+    function loadLogs() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY) || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function renderLogs() {
+      const items = loadLogs();
+      if (!items.length) {
+        logs.innerHTML = '<div class="log-item"><div><strong>Nenhuma descoberta registrada ainda.</strong><small>Depois de uma sessão, escreva o que você aprendeu.</small></div></div>';
+        return;
+      }
+
+      logs.innerHTML = items.map((item, index) => `
+        <div class="log-item">
+          <div>
+            <strong>${escapeHtml(item.date)}</strong>
+            <small>${escapeHtml(item.text)}</small>
+          </div>
+          <button class="secondary" data-remove="${index}" style="padding:8px 10px">×</button>
+        </div>
+      `).join("");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    saveBtn.addEventListener("click", () => {
+      const text = note.value.trim();
+      if (!text) return;
+
+      const items = loadLogs();
+      items.unshift({
+        date: new Date().toLocaleString("pt-BR"),
+        text
+      });
+
+      localStorage.setItem(KEY, JSON.stringify(items.slice(0, 50)));
+      note.value = "";
+      renderLogs();
+    });
+
+    clearBtn.addEventListener("click", () => {
+      if (confirm("Apagar todo o histórico deste navegador?")) {
+        localStorage.removeItem(KEY);
+        renderLogs();
+      }
+    });
+
+    logs.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-remove]");
+      if (!btn) return;
+      const items = loadLogs();
+      items.splice(Number(btn.dataset.remove), 1);
+      localStorage.setItem(KEY, JSON.stringify(items));
+      renderLogs();
+    });
+
+    renderLogs();
+  </script>
+</body>
+</html>

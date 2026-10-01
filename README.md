@@ -75,7 +75,7 @@ O erro escolhe o próximo treino.
 
 ## 📈 Evolução
 
-O MUKA1998 AI deverá futuramente registrar:
+O Kyng AI deverá futuramente registrar:
 
 - Partidas
 - Erros
@@ -98,4 +98,4 @@ Não tentar parecer Rei antes da hora.
 
 ### 🇧🇷 Projeto pessoal de Isayas
 
-**Fortnite • Treino • Evolução • Competitivo • MUKA1998 👑**
+**Fortnite • Treino • Evolução • Competitivo • Kyng 👑**

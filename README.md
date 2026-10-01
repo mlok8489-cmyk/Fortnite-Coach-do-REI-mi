@@ -2,7 +2,7 @@
 
 > **“Cada erro é habilidade a mais. Cada erro é informação a mais.”**
 
-O **MUKA1998 AI** é um projeto pessoal criado para acompanhar a evolução de **Isayas** no Fortnite e, no futuro, funcionar como um treinador pessoal de Fortnite.
+O **Kyng AI** é um projeto pessoal criado para acompanhar a evolução de **Isayas** no Fortnite e, no futuro, funcionar como um treinador pessoal de Fortnite.
 
 ## 🎯 Objetivo
 

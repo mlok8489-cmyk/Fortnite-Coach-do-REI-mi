@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kyng IA — Treinador Pessoal de Fortnite do Futuro Kyng / Boar1principeBR.">
-  <title>Kyng IA — Fortnite Coach</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Kyng IA — Fortnite Coach (Projeto Muka1998)</title>
   <style>
     :root {
       --bg: #05070e;
@@ -36,7 +38,7 @@
     }
 
     header {
-      background: rgba(13, 18, 34, 0.8);
+      background: rgba(13, 18, 34, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 16px 24px;
@@ -68,7 +70,6 @@
     .brand h1 {
       font-size: 20px;
       font-weight: 800;
-      letter-spacing: 0.5px;
       background: linear-gradient(to right, #fff, var(--muted));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -147,7 +148,7 @@
     }
 
     .api-key-box {
-      background: rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.25);
       padding: 12px;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -156,7 +157,7 @@
     .api-key-box label {
       display: block;
       font-size: 11px;
-      color: var(--muted);
+      color: var(--cyan);
       margin-bottom: 6px;
       text-transform: uppercase;
       font-weight: 700;
@@ -170,6 +171,11 @@
       padding: 10px;
       border-radius: 6px;
       font-size: 12px;
+      outline: none;
+    }
+
+    .api-key-box input:focus {
+      border-color: var(--accent);
     }
 
     .history-box {
@@ -193,7 +199,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      max-height: 220px;
+      max-height: 200px;
       overflow-y: auto;
     }
 
@@ -204,7 +210,6 @@
       padding: 8px 10px;
       border-radius: 8px;
       font-size: 12px;
-      text-align: left;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -230,9 +235,7 @@
       width: 100%;
     }
 
-    .btn-action:hover {
-      background: var(--accent);
-    }
+    .btn-action:hover { background: var(--accent); }
 
     .chat-container {
       background: var(--panel);
@@ -439,8 +442,9 @@
           
           <div class="api-key-box">
             <label for="apiKey">Chave da API Gemini</label>
-            <input type="password" id="apiKey" placeholder="AQ.Ab8RN6L6nSppUvXaIZLR_xBnZSptiB5AQ3e3aRLZ-0YEHKDHQw" onchange="saveApiKey()" oninput="saveApiKey()">
-            <small style="font-size:10px; color:var(--gold); margin-top:4px; display:block;">Salva automaticamente no navegador.</small>
+            <!-- CAMPO PARA COLARES A CHAVE API -->
+            <input type="password" id="apiKey" placeholder="colo aqui a chave api" onchange="saveApiKey()" oninput="saveApiKey()">
+            <small style="font-size:10px; color:var(--gold); margin-top:4px; display:block;">Salva automaticamente no seu navegador.</small>
           </div>
 
           <div class="history-box">
@@ -455,13 +459,13 @@
           </div>
 
           <div style="font-size: 11px; color: var(--muted); margin-top: auto;">
-            <p>💡 <strong>Status:</strong> IA programada com Sensibilidade (5.8), TV 60Hz (381ms), DPI 900 e Diagonais (120/60/180).</p>
+            <p>💡 <strong>Status:</strong> Sensibilidade (5.8), TV 60Hz (381ms), DPI 900 e Diagonais (120/60/180).</p>
           </div>
         </aside>
 
         <div class="chat-container">
           <div class="chat-messages" id="chatMessages">
-            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" à esquerda. Suas conversas podem ser salvas para não perder nada do treino! Como vamos evoluir hoje?</div>
+            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" no painel à esquerda. Como vamos evoluir o treino hoje?</div>
           </div>
           <div class="chat-input-area">
             <textarea id="chatInput" placeholder="Pergunte sobre táticas, missões, análises de erros ou metas..." onkeydown="handleKeyPress(event)"></textarea>
@@ -575,7 +579,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
 - Responda sempre de forma motivadora, altamente tática e direta ao ponto.`;
 
     let currentMessages = [
-      { role: 'assistant', text: 'Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" à esquerda. Suas conversas podem ser salvas para não perder nada do treino! Como vamos evoluir hoje?' }
+      { role: 'assistant', text: 'Salve, Futuro Kyng! Sou a Kyng IA. Cole sua chave no campo "colo aqui a chave api" no painel à esquerda. Suas conversas podem ser salvas para não perder nada do treino! Como vamos evoluir hoje?' }
     ];
 
     function switchTab(tabId) {
@@ -612,7 +616,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
       input.value = '';
 
       if (!apiKey) {
-        const warning = '⚠️ Por favor, insira sua chave da API Gemini no campo "colo aqui a chave api"!';
+        const warning = '⚠️ Por favor, insira sua chave da API Gemini no campo "AQ.Ab8RN6Km3uUynl9Os8abSEftFX8AICI9onzk9RIhcXh8Y13SYQ"!';
         appendMessage('assistant', warning);
         currentMessages.push({ role: 'assistant', text: warning });
         return;
@@ -697,7 +701,7 @@ CONHECIMENTO & MENTALIDADE DO PROJETO MUKA1998:
         return;
       }
 
-      container.innerHTML = chats.map((c, index) => `
+      container.innerHTML = chats.map((c) => `
         <div class="chat-item-btn" onclick="loadChat(${c.id})">
           <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${c.title}</span>
           <span onclick="deleteChat(event, ${c.id})" style="color:red; font-weight:bold; padding:2px 6px;">×</span>

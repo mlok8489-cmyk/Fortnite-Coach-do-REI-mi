@@ -129,12 +129,12 @@
         </aside>
 
         <!-- CHAT CENTRAL ESTILO INTERFACE IA / CHATGPT CARTOON -->
-        <section class="lg:col-span-3 fn-card flex flex-col h-[75vh] overflow-hidden">
+        <section class="lg:col-span-3 fn-card flex flex-col h-[82vh] overflow-hidden">
             <!-- CABEÇALHO DO CHAT -->
             <div class="bg-[#1f1442] px-6 py-4 border-b-4 border-[#4a3394] flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <div class="w-4 h-4 bg-green-400 rounded-full border-2 border-black animate-pulse"></div>
-                    <span class="font-gaming font-bold text-lg tracking-wide text-yellow-400 uppercase">IA Coach & Central de Comando MUKA1998</span>
+                    <span class="font-gaming font-bold text-lg tracking-wide text-yellow-400 uppercase">Coach do Futuro IS AM Kyng</span>
                 </div>
                 <button onclick="clearChat()" class="fn-button bg-red-600 hover:bg-red-500 text-white text-xs font-extrabold px-3 py-1.5 rounded-lg flex items-center gap-1 font-gaming tracking-wide uppercase">
                     <i class="fa-solid fa-trash-can"></i> Limpar Chat
@@ -146,8 +146,8 @@
                 <div class="flex items-start gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
                     <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_4px_0_#110926]">
-                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach MUKA1998</p>
-                        <p>Salve, Príncipe! Interface totalmente customizada no estilo do Império do Fortnite. Estou pronto para conversar sobre qualquer assunto em velocidade máxima e te guiar rumo ao topo. Qual é a call de hoje?</p>
+                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach do Futuro IS AM Kyng</p>
+                        <p>Salve, Príncipe! Bloco de mensagens expandido para o máximo de conforto visual. Estou pronto para conversar sobre qualquer assunto em velocidade máxima e te guiar rumo ao topo. Qual é a call de hoje?</p>
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                 <div class="flex items-start gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
                     <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_4px_0_#110926]">
-                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach MUKA1998</p>
+                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach do Futuro IS AM Kyng</p>
                         <p>Histórico reiniciado. Pronto para debater qualquer tema e acelerar rumo ao topo do Fortnite BR!</p>
                     </div>
                 </div>
@@ -257,7 +257,7 @@
             const loadingId = 'loading-' + Date.now();
             appendLoading(loadingId);
 
-            const systemPrompt = `Você é o Coach oficial e assistente supremo do MUKA1998 (o Rei Absoluto e Lendário Jogador de Fortnite BR, também conhecido como Boar1principeBR / IKV_PRINCIPE_REI).
+            const systemPrompt = `Você é o Coach do Futuro IS AM Kyng, assistente supremo e treinador oficial do MUKA1998 (o Rei Absoluto e Lendário Jogador de Fortnite BR, também conhecido como Boar1principeBR / IKV_PRINCIPE_REI).
             Você está habilitado e preparado para conversar sobre absolutamente QUALQUER assunto trazido pelo usuário (tecnologia, vida, estudos, entretenimento, conversas gerais ou estratégia), respondendo sempre com profundidade, clareza e agilidade.
             
             DIRETRIZ SUPREMA E OBRIGATÓRIA:
@@ -333,7 +333,7 @@
                     👑
                 </div>
                 <div class="${isUser ? 'bg-blue-600 border-2 border-black text-white' : 'bg-[#271b55] border-2 border-[#4a3394] text-gray-100'} p-4 rounded-2xl max-w-2xl shadow-[0_4px_0_#110926] whitespace-pre-wrap">
-                    <p class="font-bold ${isUser ? 'text-blue-200' : 'text-yellow-400'} mb-1 font-gaming tracking-wide">${isUser ? 'MUKA1998 (Rei)' : 'Coach MUKA1998'}</p>
+                    <p class="font-bold ${isUser ? 'text-blue-200' : 'text-yellow-400'} mb-1 font-gaming tracking-wide">${isUser ? 'MUKA1998 (Rei)' : 'Coach do Futuro IS AM Kyng'}</p>
                     <p>${escapeHtml(text)}</p>
                 </div>
             `;
@@ -349,7 +349,7 @@
             div.innerHTML = `
                 <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
                 <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl text-gray-300 shadow-[0_4px_0_#110926] flex items-center gap-2">
-                    <i class="fa-solid fa-spinner animate-spin text-yellow-400"></i> O Coach está processando a call em velocidade máxima...
+                    <i class="fa-solid fa-spinner animate-spin text-yellow-400"></i> O Coach do Futuro está processando a call em velocidade máxima...
                 </div>
             `;
             container.appendChild(div);

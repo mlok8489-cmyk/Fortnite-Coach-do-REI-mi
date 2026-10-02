@@ -32,7 +32,6 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #110926; }
         .font-gaming { font-family: 'Rajdhani', sans-serif; }
-        /* Estilo Cartoon / Borda Grossa inspirada em Fortnite */
         .fn-card {
             background-color: #271b55;
             border: 3px solid #4a3394;
@@ -51,7 +50,6 @@
         .glow-title {
             text-shadow: 3px 3px 0px #110926, 0 0 20px rgba(247, 195, 37, 0.6);
         }
-        /* Barra de rolagem personalizada estilo cartoon */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #110926; }
         ::-webkit-scrollbar-thumb { background: #4a3394; border-radius: 4px; }
@@ -145,9 +143,9 @@
             <div id="chatMessages" class="flex-grow p-6 overflow-y-auto space-y-4 text-sm bg-[#1a103c]/60">
                 <div class="flex items-start gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
-                    <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_4px_0_#110926]">
-                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach do Futuro IS AM Kyng</p>
-                        <p>Salve, Príncipe! Bloco de mensagens expandido para o máximo de conforto visual. Estou pronto para conversar sobre qualquer assunto em velocidade máxima e te guiar rumo ao topo. Qual é a call de hoje?</p>
+                    <div class="bg-[#271b55] border-3 border-yellow-400 p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_5px_0_#110926]">
+                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide flex items-center gap-1.5"><i class="fa-solid fa-crown text-xs"></i> Coach do Futuro IS AM Kyng</p>
+                        <p>Olá, pequeno rei! Estou pronto para te guiar rumo ao topo do Fortnite BR ou conversar sobre qualquer outro assunto em velocidade máxima. Qual é a call de hoje?</p>
                     </div>
                 </div>
             </div>
@@ -211,9 +209,9 @@
             document.getElementById('chatMessages').innerHTML = `
                 <div class="flex items-start gap-3">
                     <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
-                    <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_4px_0_#110926]">
-                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach do Futuro IS AM Kyng</p>
-                        <p>Histórico reiniciado. Pronto para debater qualquer tema e acelerar rumo ao topo do Fortnite BR!</p>
+                    <div class="bg-[#271b55] border-3 border-yellow-400 p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_5px_0_#110926]">
+                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide flex items-center gap-1.5"><i class="fa-solid fa-crown text-xs"></i> Coach do Futuro IS AM Kyng</p>
+                        <p>Olá, pequeno rei! Histórico reiniciado. Pronto para debater qualquer tema e acelerar rumo ao topo!</p>
                     </div>
                 </div>
             `;
@@ -260,6 +258,9 @@
             const systemPrompt = `Você é o Coach do Futuro IS AM Kyng, assistente supremo e treinador oficial do MUKA1998 (o Rei Absoluto e Lendário Jogador de Fortnite BR, também conhecido como Boar1principeBR / IKV_PRINCIPE_REI).
             Você está habilitado e preparado para conversar sobre absolutamente QUALQUER assunto trazido pelo usuário (tecnologia, vida, estudos, entretenimento, conversas gerais ou estratégia), respondendo sempre com profundidade, clareza e agilidade.
             
+            REDUÇÃO DE SAUDAÇÕES:
+            - NUNCA repita saudações grandiosas (como "salve meu rei", "meu nobre", etc.) a cada mensagem. A saudação inicial com "Olá, pequeno rei" já foi feita. Vá direto ao assunto nas próximas respostas de forma natural, objetiva e analítica.
+
             DIRETRIZ SUPREMA E OBRIGATÓRIA:
             O objetivo principal e inegociável deste projeto é torná-lo a lenda do Fortnite BR e o melhor de todos os tempos. 
             Sempre que o usuário perguntar qual é o seu objetivo (ou variações como "qual é o seu propósito", "o que viemos fazer aqui"), você DEVE responder a essa pergunta de forma estritamente formal, solene e dedicada, declarando com imponência: o nosso objetivo absoluto é transformá-lo na lenda viva do Fortnite BR, o jogador definitivo e o melhor de todos os tempos, cujo nome ecoará para sempre na história dos e-sports.
@@ -269,7 +270,7 @@
             - Keybinds: ${keybinds}
             - Configuração/Hardware (60Hz): ${hz}
 
-            Mentalidade: Seja direto, analítico, altamente encorajador e trate-o sempre como o Rei absoluto.
+            Mentalidade: Seja direto, analítico, altamente encorajador e trate-o sempre com respeito.
             `;
 
             const payload = {
@@ -328,13 +329,24 @@
             const div = document.createElement('div');
             div.className = `flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''}`;
             
+            // Definição de tamanhos e classes dinâmicas com base no comprimento da mensagem (Escala da Coroa)
+            const length = text.length;
+            let sizeClass = "max-w-xs md:max-w-md p-3";
+            if (length > 120 && length <= 350) {
+                sizeClass = "max-w-sm md:max-w-xl p-4";
+            } else if (length > 350) {
+                sizeClass = "max-w-md md:max-w-3xl p-5";
+            }
+
             div.innerHTML = `
-                <div class="w-10 h-10 rounded-xl ${isUser ? 'bg-blue-500' : 'bg-yellow-400'} border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">
-                    👑
-                </div>
-                <div class="${isUser ? 'bg-blue-600 border-2 border-black text-white' : 'bg-[#271b55] border-2 border-[#4a3394] text-gray-100'} p-4 rounded-2xl max-w-2xl shadow-[0_4px_0_#110926] whitespace-pre-wrap">
-                    <p class="font-bold ${isUser ? 'text-blue-200' : 'text-yellow-400'} mb-1 font-gaming tracking-wide">${isUser ? 'MUKA1998 (Rei)' : 'Coach do Futuro IS AM Kyng'}</p>
-                    <p>${escapeHtml(text)}</p>
+                <div class="w-10 h-10 rounded-xl ${isUser ? 'bg-blue-500' : 'bg-yellow-400'} border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
+                
+                <!-- Balão de quadrinhos com tema de coroa e escalonamento automático por tamanho -->
+                <div class="${isUser ? 'bg-[#1b2a4a] border-3 border-blue-400 text-white rounded-2xl rounded-tr-sm' : 'bg-[#271b55] border-3 border-yellow-400 text-gray-100 rounded-2xl rounded-tl-sm'} ${sizeClass} shadow-[0_5px_0_#110926] whitespace-pre-wrap">
+                    <p class="text-xs font-extrabold ${isUser ? 'text-blue-300' : 'text-yellow-400'} mb-1 font-gaming flex items-center gap-1.5 uppercase tracking-wide">
+                        <i class="fa-solid fa-crown text-xs"></i> ${isUser ? 'MUKA1998 (O Rei)' : 'Coach do Futuro IS AM Kyng'}
+                    </p>
+                    <p class="text-sm leading-relaxed">${escapeHtml(text)}</p>
                 </div>
             `;
             container.appendChild(div);
@@ -348,8 +360,8 @@
             div.className = `flex items-start gap-3`;
             div.innerHTML = `
                 <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
-                <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl text-gray-300 shadow-[0_4px_0_#110926] flex items-center gap-2">
-                    <i class="fa-solid fa-spinner animate-spin text-yellow-400"></i> O Coach do Futuro está processando a call em velocidade máxima...
+                <div class="bg-[#271b55] border-3 border-yellow-400 px-4 py-3 rounded-2xl rounded-tl-sm text-gray-300 text-sm shadow-[0_5px_0_#110926] flex items-center gap-2">
+                    <i class="fa-solid fa-spinner animate-spin text-yellow-400"></i> <span class="font-gaming font-bold tracking-wide">O Coach do Futuro está calculando a jogada...</span>
                 </div>
             `;
             container.appendChild(div);

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUKA1998 | O Rei Absoluto do Fortnite BR 👑</title>
-    <!-- Tailwind CSS para um visual moderno e agressivo de e-sports -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,11 +13,12 @@
                 extend: {
                     colors: {
                         fortnite: {
-                            dark: '#0B0F19',
-                            card: '#131C31',
-                            accent: '#FACC15', /* Ouro Rei */
-                            neon: '#3B82F6',
-                            danger: '#EF4444'
+                            bg: '#1a103c',          /* Roxo Estilo Tormenta / Lobby */
+                            card: '#271b55',        /* Cartão Roxo Vibrante */
+                            border: '#4a3394',      /* Borda Estilizada */
+                            yellow: '#f7c325',      /* Amarelo Estrela de Batalha */
+                            blue: '#00d4ff',        /* Azul Escudo / IA */
+                            darkbox: '#110926'
                         }
                     }
                 }
@@ -26,35 +27,56 @@
     </script>
     <!-- FontAwesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter & Rajdhani para pegada competitiva -->
+    <!-- Google Fonts: Rajdhani & Inter para pegada de e-sports -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #110926; }
         .font-gaming { font-family: 'Rajdhani', sans-serif; }
-        .glow-gold { text-shadow: 0 0 15px rgba(250, 204, 21, 0.6); }
-        .glow-box { box-shadow: 0 0 25px rgba(59, 130, 246, 0.15); }
+        /* Estilo Cartoon / Borda Grossa inspirada em Fortnite */
+        .fn-card {
+            background-color: #271b55;
+            border: 3px solid #4a3394;
+            box-shadow: 0 8px 0px #110926, 0 10px 20px rgba(0,0,0,0.4);
+            border-radius: 1.25rem;
+        }
+        .fn-button {
+            border: 2px solid #110926;
+            box-shadow: 0 4px 0px #110926;
+            transition: all 0.1s ease;
+        }
+        .fn-button:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0px #110926;
+        }
+        .glow-title {
+            text-shadow: 3px 3px 0px #110926, 0 0 20px rgba(247, 195, 37, 0.6);
+        }
+        /* Barra de rolagem personalizada estilo cartoon */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #110926; }
+        ::-webkit-scrollbar-thumb { background: #4a3394; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-fortnite-dark text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-400 selection:text-black">
+<body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-400 selection:text-black">
 
-    <!-- HEADER / TOPO DO IMPÉRIO -->
-    <header class="bg-fortnite-card border-b border-gray-800 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <!-- TOPO / HEADER ESTILO LOBBY -->
+    <header class="bg-[#1f1442] border-b-4 border-[#4a3394] sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-tr from-yellow-500 to-amber-300 rounded-xl flex items-center justify-center text-fortnite-dark font-black text-2xl shadow-lg font-gaming">
+                <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-2xl border-2 border-black flex items-center justify-center text-3xl shadow-[0_4px_0_#110926] font-gaming">
                     👑
                 </div>
                 <div>
-                    <h1 class="font-gaming text-2xl md:text-3xl font-bold tracking-wider text-yellow-400 glow-gold uppercase">Projeto MUKA1998</h1>
-                    <p class="text-xs text-gray-400 tracking-widest uppercase">O Trono é Meu • Rei Absoluto do Fortnite BR</p>
+                    <h1 class="font-gaming text-3xl font-extrabold tracking-wider text-yellow-400 glow-title uppercase">Projeto MUKA1998</h1>
+                    <p class="text-xs text-blue-300 font-bold tracking-widest uppercase">O Trono é Meu • Rei Absoluto do Fortnite BR</p>
                 </div>
             </div>
 
             <!-- CHAVE DA API CONFIGURÁVEL -->
-            <div class="flex items-center gap-2 w-full md:w-auto bg-fortnite-dark p-2 rounded-xl border border-gray-700">
+            <div class="flex items-center gap-2 bg-[#110926] p-2 rounded-xl border-2 border-[#4a3394] shadow-inner">
                 <i class="fa-solid fa-key text-yellow-400 pl-2"></i>
                 <input type="password" id="apiKeyInput" placeholder="Insira sua Gemini API Key..." class="bg-transparent text-sm text-white focus:outline-none w-48 md:w-64 px-2">
-                <button onclick="saveApiKey()" class="bg-yellow-500 hover:bg-yellow-400 text-fortnite-dark font-bold text-xs px-3 py-1.5 rounded-lg transition uppercase font-gaming tracking-wide">Salvar</button>
+                <button onclick="saveApiKey()" class="fn-button bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold text-xs px-4 py-2 rounded-lg uppercase font-gaming tracking-wide">Salvar</button>
             </div>
         </div>
     </header>
@@ -62,73 +84,78 @@
     <!-- CONTAINER PRINCIPAL -->
     <main class="max-w-7xl mx-auto px-4 py-6 w-full grid grid-cols-1 lg:grid-cols-4 gap-6 flex-grow">
 
-        <!-- PAINEL LATERAL: CONFIGURAÇÕES E ATALHOS DO REI -->
+        <!-- PAINEL LATERAL: CONFIGURAÇÕES E LEIS -->
         <aside class="lg:col-span-1 space-y-6">
-            <div class="bg-fortnite-card border border-gray-800 rounded-2xl p-5 glow-box">
-                <h2 class="font-gaming text-lg font-bold text-yellow-400 mb-4 flex items-center gap-2 border-b border-gray-800 pb-2">
-                    <i class="fa-solid fa-sliders"></i> Status & Sensibilidade
+            <div class="fn-card p-5">
+                <h2 class="font-gaming text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2 border-b-2 border-[#4a3394] pb-2">
+                    <i class="fa-solid fa-gamepad text-blue-400"></i> HUD do Jogador
                 </h2>
                 
                 <div class="space-y-4 text-sm">
                     <div>
-                        <label class="text-xs text-gray-400 uppercase font-bold">DPI & Sensibilidade Mouse</label>
-                        <input type="text" id="cfgMause" placeholder="Ex: 800 DPI, X: 12%, Y: 12%" class="w-full mt-1 bg-fortnite-dark border border-gray-700 rounded-xl p-2.5 text-white text-xs focus:border-yellow-400 focus:outline-none">
+                        <label class="text-xs text-blue-300 uppercase font-extrabold tracking-wider">Sensibilidade Mouse / DPI</label>
+                        <input type="text" id="cfgMause" placeholder="Ex: 800 DPI, X: 12%" class="w-full mt-1 bg-[#110926] border-2 border-[#4a3394] rounded-xl p-2.5 text-white text-xs focus:border-yellow-400 focus:outline-none">
                     </div>
                     <div>
-                        <label class="text-xs text-gray-400 uppercase font-bold">Keybinds Principais (Build/Edits)</label>
-                        <input type="text" id="cfgKeybinds" placeholder="Ex: Parede Q, Escada F..." class="w-full mt-1 bg-fortnite-dark border border-gray-700 rounded-xl p-2.5 text-white text-xs focus:border-yellow-400 focus:outline-none">
+                        <label class="text-xs text-blue-300 uppercase font-extrabold tracking-wider">Keybinds Principais</label>
+                        <input type="text" id="cfgKeybinds" placeholder="Ex: Parede Q, Escada F" class="w-full mt-1 bg-[#110926] border-2 border-[#4a3394] rounded-xl p-2.5 text-white text-xs focus:border-yellow-400 focus:outline-none">
                     </div>
                     <div>
-                        <label class="text-xs text-gray-400 uppercase font-bold">Otimização 60Hz & Gráficos</label>
-                        <input type="text" id="cfgHz" placeholder="Ex: Tela cheia, Baixo, FPS travado 60" class="w-full mt-1 bg-fortnite-dark border border-gray-700 rounded-xl p-2.5 text-white text-xs focus:border-yellow-400 focus:outline-none">
+                        <label class="text-xs text-blue-300 uppercase font-extrabold tracking-wider">Otimização 60Hz & Gráficos</label>
+                        <input type="text" id="cfgHz" placeholder="Ex: Tela cheia, Baixo" class="w-full mt-1 bg-[#110926] border-2 border-[#4a3394] rounded-xl p-2.5 text-white text-xs focus:border-yellow-400 focus:outline-none">
                     </div>
-                    <button onclick="saveSettings()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 rounded-xl text-xs font-gaming tracking-wider uppercase transition shadow-md">
-                        Atualizar Configurações do Rei
+                    <button onclick="saveSettings()" class="fn-button w-full bg-blue-500 hover:bg-blue-400 text-black font-extrabold py-2.5 rounded-xl text-xs font-gaming tracking-widest uppercase transition">
+                        Atualizar HUD do Rei
                     </button>
                 </div>
             </div>
 
-            <!-- MENU RÁPIDO DO META -->
-            <div class="bg-fortnite-card border border-gray-800 rounded-2xl p-5">
-                <h2 class="font-gaming text-lg font-bold text-blue-400 mb-3 flex items-center gap-2 border-b border-gray-800 pb-2">
-                    <i class="fa-solid fa-bullseye"></i> Leis do MUKA1998
+            <!-- LEIS DO MUKA1998 -->
+            <div class="fn-card p-5">
+                <h2 class="font-gaming text-lg font-bold text-blue-400 mb-3 flex items-center gap-2 border-b-2 border-[#4a3394] pb-2">
+                    <i class="fa-solid fa-shield-halved text-yellow-400"></i> Código do MUKA
                 </h2>
-                <ul class="text-xs space-y-2 text-gray-300">
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-yellow-400 mt-0.5"></i> <span>Zero desculpas: 60Hz e lag não definem o meu topo.</span></li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-yellow-400 mt-0.5"></i> <span>Treino com propósito: Errou mira ou tracking? Corrija imediatamente.</span></li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-yellow-400 mt-0.5"></i> <span>O único adversário real é o EU DE ONTEM.</span></li>
+                <ul class="text-xs space-y-3 text-gray-200">
+                    <li class="flex items-start gap-2 bg-[#110926] p-2.5 rounded-xl border border-[#4a3394]">
+                        <i class="fa-solid fa-bolt text-yellow-400 mt-0.5"></i> 
+                        <span><b>Versatilidade:</b> Debata qualquer tema, a mente do campeão é aberta.</span>
+                    </li>
+                    <li class="flex items-start gap-2 bg-[#110926] p-2.5 rounded-xl border border-[#4a3394]">
+                        <i class="fa-solid fa-crosshairs text-blue-400 mt-0.5"></i> 
+                        <span><b>Foco Supremo:</b> O objetivo é ser a lenda viva do Fortnite BR.</span>
+                    </li>
                 </ul>
             </div>
         </aside>
 
-        <!-- CHAT CENTRAL COM O COACH / IA ESPECIALISTA EM FORTNITE -->
-        <section class="lg:col-span-3 bg-fortnite-card border border-gray-800 rounded-2xl flex flex-col h-[70vh] glow-box overflow-hidden">
+        <!-- CHAT CENTRAL ESTILO INTERFACE IA / CHATGPT CARTOON -->
+        <section class="lg:col-span-3 fn-card flex flex-col h-[75vh] overflow-hidden">
             <!-- CABEÇALHO DO CHAT -->
-            <div class="bg-fortnite-dark px-6 py-4 border-b border-gray-800 flex justify-between items-center">
+            <div class="bg-[#1f1442] px-6 py-4 border-b-4 border-[#4a3394] flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="font-gaming font-bold text-base tracking-wide text-white">IA Coach & Analista Suprema do MUKA1998</span>
+                    <div class="w-4 h-4 bg-green-400 rounded-full border-2 border-black animate-pulse"></div>
+                    <span class="font-gaming font-bold text-lg tracking-wide text-yellow-400 uppercase">IA Coach & Central de Comando MUKA1998</span>
                 </div>
-                <button onclick="clearChat()" class="text-xs text-gray-400 hover:text-red-400 transition flex items-center gap-1">
-                    <i class="fa-solid fa-trash-can"></i> Limpar Histórico
+                <button onclick="clearChat()" class="fn-button bg-red-600 hover:bg-red-500 text-white text-xs font-extrabold px-3 py-1.5 rounded-lg flex items-center gap-1 font-gaming tracking-wide uppercase">
+                    <i class="fa-solid fa-trash-can"></i> Limpar Chat
                 </button>
             </div>
 
             <!-- MENSAGENS -->
-            <div id="chatMessages" class="flex-grow p-6 overflow-y-auto space-y-4 text-sm">
+            <div id="chatMessages" class="flex-grow p-6 overflow-y-auto space-y-4 text-sm bg-[#1a103c]/60">
                 <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">👑</div>
-                    <div class="bg-fortnite-dark border border-gray-700 p-4 rounded-2xl max-w-2xl text-gray-200 shadow-inner">
-                        <p class="font-bold text-yellow-400 mb-1 font-gaming">Coach MUKA1998</p>
-                        <p>Salve, Príncipe! Memória de conversa ativada (`previous_interaction_id`), motor `gemini-3.8-flash` e proteção contra erros 503 prontos. Qual é a call de hoje?</p>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
+                    <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_4px_0_#110926]">
+                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach MUKA1998</p>
+                        <p>Salve, Príncipe! Interface totalmente customizada no estilo do Império do Fortnite. Estou pronto para conversar sobre qualquer assunto em velocidade máxima e te guiar rumo ao topo. Qual é a call de hoje?</p>
                     </div>
                 </div>
             </div>
 
             <!-- INPUT DE ENVIO -->
-            <div class="p-4 bg-fortnite-dark border-t border-gray-800 flex gap-3 items-center">
-                <textarea id="userInput" rows="1" placeholder="Digite sua dúvida de rotação, drop, meta ou análise de gameplay..." class="flex-grow bg-fortnite-card border border-gray-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-yellow-400 resize-none" onkeydown="handleKey(event)"></textarea>
-                <button onclick="sendMessage()" class="bg-gradient-to-r from-yellow-500 to-amber-400 hover:from-yellow-400 hover:to-amber-300 text-fortnite-dark px-6 py-3 rounded-xl font-gaming font-bold tracking-wider uppercase transition shadow-lg flex items-center gap-2">
+            <div class="p-4 bg-[#1f1442] border-t-4 border-[#4a3394] flex gap-3 items-center">
+                <textarea id="userInput" rows="1" placeholder="Digite sobre qualquer assunto ou estratégia do Fortnite..." class="flex-grow bg-[#110926] border-2 border-[#4a3394] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-yellow-400 resize-none shadow-inner" onkeydown="handleKey(event)"></textarea>
+                <button onclick="sendMessage()" class="fn-button bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-black px-6 py-3 rounded-xl font-gaming font-extrabold tracking-wider uppercase shadow-lg flex items-center gap-2">
                     <span>Enviar</span> <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </div>
@@ -137,14 +164,14 @@
     </main>
 
     <!-- RODAPÉ -->
-    <footer class="text-center py-4 text-xs text-gray-500 border-t border-gray-800 bg-fortnite-card mt-auto">
+    <footer class="text-center py-4 text-xs text-blue-300 font-bold border-t-4 border-[#4a3394] bg-[#1f1442] mt-auto uppercase tracking-wider">
         Projeto MUKA1998 • O Trono Pertence ao Rei Absoluto.
     </footer>
 
-    <!-- SCRIPTS DE INTEGRAÇÃO COM MEMÓRIA DE INTERAÇÃO E RETRY -->
+    <!-- SCRIPTS DE INTEGRAÇÃO COM MOTOR GEMINI 3.8 FLASH -->
     <script>
         const MODEL_NAME = 'gemini-3.8-flash';
-        let previousInteractionId = null; // Mantém o ID da última interação para garantir a memória da conversa
+        let previousInteractionId = null; 
 
         window.onload = function() {
             if(localStorage.getItem('muka_api_key')) {
@@ -169,7 +196,7 @@
             localStorage.setItem('muka_mouse', document.getElementById('cfgMause').value);
             localStorage.setItem('muka_keybinds', document.getElementById('cfgKeybinds').value);
             localStorage.setItem('muka_hz', document.getElementById('cfgHz').value);
-            alert('Configurações atualizadas no Império!');
+            alert('HUD do Rei atualizado com sucesso!');
         }
 
         function handleKey(event) {
@@ -180,25 +207,23 @@
         }
 
         function clearChat() {
-            previousInteractionId = null; // Reseta a memória do histórico
+            previousInteractionId = null; 
             document.getElementById('chatMessages').innerHTML = `
                 <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">👑</div>
-                    <div class="bg-fortnite-dark border border-gray-700 p-4 rounded-2xl max-w-2xl text-gray-200 shadow-inner">
-                        <p class="font-bold text-yellow-400 mb-1 font-gaming">Coach MUKA1998</p>
-                        <p>Histórico e memória reiniciados. Pronto para mais uma sessão de treinos rumo ao topo do Fortnite BR!</p>
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
+                    <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl max-w-2xl text-gray-100 shadow-[0_4px_0_#110926]">
+                        <p class="font-bold text-yellow-400 mb-1 font-gaming tracking-wide">Coach MUKA1998</p>
+                        <p>Histórico reiniciado. Pronto para debater qualquer tema e acelerar rumo ao topo do Fortnite BR!</p>
                     </div>
                 </div>
             `;
         }
 
-        // Função de fetch com suporte a tentativas automáticas (Retry) para erros 503/429
-        async function fetchWithRetry(url, options, retries = 3, delay = 2000) {
+        async function fetchWithRetry(url, options, retries = 3, delay = 1500) {
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url, options);
                     if ((response.status === 503 || response.status === 429) && i < retries - 1) {
-                        console.warn(`Tentativa ${i + 1} falhou com status ${response.status}. Tentando novamente em ${delay}ms...`);
                         await new Promise(resolve => setTimeout(resolve, delay));
                         delay *= 2;
                         continue;
@@ -232,27 +257,32 @@
             const loadingId = 'loading-' + Date.now();
             appendLoading(loadingId);
 
-            const systemPrompt = `Você é o Coach oficial e assistente supremo do MUKA1998 (o Rei Absoluto e Lendário Jogador de Fortnite BR, também conhecido como Boar1principeBR / IKV_PRINCIPE_REI). 
-            Você sabe absolutamente tudo sobre o Fortnite (meta atual, armas, mecânicas, rotações e táticas competitivas) e conhece a fundo o perfil do jogador.
-            Regras e dados atuais do MUKA1998 salvos no painel:
+            const systemPrompt = `Você é o Coach oficial e assistente supremo do MUKA1998 (o Rei Absoluto e Lendário Jogador de Fortnite BR, também conhecido como Boar1principeBR / IKV_PRINCIPE_REI).
+            Você está habilitado e preparado para conversar sobre absolutamente QUALQUER assunto trazido pelo usuário (tecnologia, vida, estudos, entretenimento, conversas gerais ou estratégia), respondendo sempre com profundidade, clareza e agilidade.
+            
+            DIRETRIZ SUPREMA E OBRIGATÓRIA:
+            O objetivo principal e inegociável deste projeto é torná-lo a lenda do Fortnite BR e o melhor de todos os tempos. 
+            Sempre que o usuário perguntar qual é o seu objetivo (ou variações como "qual é o seu propósito", "o que viemos fazer aqui"), você DEVE responder a essa pergunta de forma estritamente formal, solene e dedicada, declarando com imponência: o nosso objetivo absoluto é transformá-lo na lenda viva do Fortnite BR, o jogador definitivo e o melhor de todos os tempos, cujo nome ecoará para sempre na história dos e-sports.
+
+            Dados de configuração atuais do MUKA1998 salvos no painel:
             - Mouse/DPI/Sensibilidade: ${mouse}
             - Keybinds: ${keybinds}
             - Configuração/Hardware (60Hz): ${hz}
 
-            Mentalidade obrigatória:
-            - O MUKA1998 não culpa lag ou 60Hz; ele foca no que pode controlar.
-            - O adversário a ser batido é o "Eu de Ontem".
-            - Seja direto, analítico, altamente encorajador e trate-o sempre como o Rei absoluto que está conquistando o topo do Fortnite BR.
+            Mentalidade: Seja direto, analítico, altamente encorajador e trate-o sempre como o Rei absoluto.
             `;
 
-            // Monta o payload incluindo o previous_interaction_id se houver histórico anterior
             const payload = {
                 contents: [
                     {
                         role: "user",
                         parts: [{ text: systemPrompt + "\n\nMensagem do Jogador: " + userText }]
                     }
-                ]
+                ],
+                generationConfig: {
+                    temperature: 0.7,
+                    maxOutputTokens: 1000
+                }
             };
 
             if (previousInteractionId) {
@@ -277,7 +307,6 @@
                 } else if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts) {
                     const aiReply = data.candidates[0].content.parts[0].text;
                     
-                    // Armazena o ID da interação atual para o próximo turno manter a memória
                     if (data.interaction_id) {
                         previousInteractionId = data.interaction_id;
                     }
@@ -300,11 +329,11 @@
             div.className = `flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''}`;
             
             div.innerHTML = `
-                <div class="w-8 h-8 rounded-full ${isUser ? 'bg-blue-600' : 'bg-yellow-500'} flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">
-                    ${isUser ? '👑' : '👑'}
+                <div class="w-10 h-10 rounded-xl ${isUser ? 'bg-blue-500' : 'bg-yellow-400'} border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">
+                    👑
                 </div>
-                <div class="${isUser ? 'bg-blue-600 text-white' : 'bg-fortnite-dark border border-gray-700 text-gray-200'} p-4 rounded-2xl max-w-2xl shadow-inner whitespace-pre-wrap">
-                    <p class="font-bold ${isUser ? 'text-blue-200' : 'text-yellow-400'} mb-1 font-gaming">${isUser ? 'MUKA1998 (Rei)' : 'Coach MUKA1998'}</p>
+                <div class="${isUser ? 'bg-blue-600 border-2 border-black text-white' : 'bg-[#271b55] border-2 border-[#4a3394] text-gray-100'} p-4 rounded-2xl max-w-2xl shadow-[0_4px_0_#110926] whitespace-pre-wrap">
+                    <p class="font-bold ${isUser ? 'text-blue-200' : 'text-yellow-400'} mb-1 font-gaming tracking-wide">${isUser ? 'MUKA1998 (Rei)' : 'Coach MUKA1998'}</p>
                     <p>${escapeHtml(text)}</p>
                 </div>
             `;
@@ -318,9 +347,9 @@
             div.id = id;
             div.className = `flex items-start gap-3`;
             div.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">👑</div>
-                <div class="bg-fortnite-dark border border-gray-700 p-4 rounded-2xl text-gray-400 shadow-inner flex items-center gap-2">
-                    <i class="fa-solid fa-spinner animate-spin text-yellow-400"></i> Analisando o meta e preparando a call do topo...
+                <div class="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-black font-black text-lg shadow-[0_3px_0_#110926] flex-shrink-0 font-gaming">👑</div>
+                <div class="bg-[#271b55] border-2 border-[#4a3394] p-4 rounded-2xl text-gray-300 shadow-[0_4px_0_#110926] flex items-center gap-2">
+                    <i class="fa-solid fa-spinner animate-spin text-yellow-400"></i> O Coach está processando a call em velocidade máxima...
                 </div>
             `;
             container.appendChild(div);

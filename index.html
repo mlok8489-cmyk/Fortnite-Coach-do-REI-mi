@@ -118,7 +118,6 @@
             color: #e2e8f0;
         }
 
-        /* --- DESIGN MODERNO DA KYNG IA (CHAT) --- */
         .api-config { 
             background: #090d16; 
             padding: 12px 18px; 
@@ -244,7 +243,6 @@
             <button class="tab-btn" onclick="openTab(event, 'analise')">Diário & Análise</button>
         </div>
 
-        <!-- ABA 1: KYNG IA -->
         <div id="chat-ia" class="tab-content active">
             <div class="api-config">
                 <span>🔑 Chave API (Gemini):</span>
@@ -263,7 +261,6 @@
             </div>
         </div>
 
-        <!-- ABA 2: TREINOS -->
         <div id="treinos" class="tab-content">
             <h2>🎯 SISTEMA DE CORREÇÃO DE MIRA</h2>
             <div class="quote">"EU NÃO VOU TREINAR MINHA MIRA NO AUTOMÁTICO. EU VOU TREINAR O QUE EU ERREI."</div>
@@ -275,7 +272,6 @@
             <p>Objetivo: transformar tiros difíceis em tiros consistentes. Crosshair placement cirúrgico e flicks ajustados.</p>
         </div>
 
-        <!-- ABA 3: REGRAS -->
         <div id="regras" class="tab-content">
             <h2>⚖️ AS LEIS DO KYNG</h2>
             <ul>
@@ -288,7 +284,6 @@
             <p>Nunca julgue seu progresso por uma partida ruim isolada. A única métrica válida é: *Eu hoje comparado a mim mesmo há 30 dias*.</p>
         </div>
 
-        <!-- ABA 4: DIÁRIO -->
         <div id="analise" class="tab-content">
             <h2>📊 ANÁLISE DE VÍDEOS E EVOLUÇÃO</h2>
             <p>Mantenha o registro diário atualizado para alimentar sua consistência:</p>
@@ -367,14 +362,14 @@
             sendBtn.textContent = 'Processando...';
 
             try {
-                // Sistema estabilizado com múltiplos fallbacks automáticos para garantir resposta sem erros
-                let data = await fetchWithModel('gemini-1.5-flash', apiKey, systemPrompt);
+                // Atualizado para usar os modelos mais modernos disponíveis na API v1beta
+                let data = await fetchWithModel('gemini-2.5-flash', apiKey, systemPrompt);
                 
                 if (data.error) {
-                    data = await fetchWithModel('gemini-1.5-pro', apiKey, systemPrompt);
+                    data = await fetchWithModel('gemini-2.0-flash', apiKey, systemPrompt);
                 }
                 if (data.error) {
-                    data = await fetchWithModel('gemini-pro', apiKey, systemPrompt);
+                    data = await fetchWithModel('gemini-1.5-flash', apiKey, systemPrompt);
                 }
 
                 if (data.error) {

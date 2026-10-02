@@ -6,88 +6,99 @@
     <title>Projeto: Transformar o Príncipe em Kyng</title>
     <style>
         :root {
-            --bg-color: #07090e;
-            --container-bg: #0f172a;
-            --primary-color: #f59e0b;
-            --primary-glow: rgba(245, 158, 11, 0.3);
+            --bg-color: #05070b;
+            --container-bg: #0c101d;
+            --primary-purple: #8b5cf6;
+            --accent-magenta: #ec4899;
+            --primary-glow: rgba(139, 92, 246, 0.35);
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #1e293b;
             --border-glow: #334155;
-            --user-msg-bg: #f59e0b;
-            --user-msg-color: #000;
-            --ai-msg-bg: #1e293b;
+            --user-msg-bg: #8b5cf6;
+            --user-msg-color: #fff;
+            --ai-msg-bg: #151b2b;
             --ai-msg-color: #f8fafc;
         }
 
         body { 
             font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
+            background: radial-gradient(circle at 50% 0%, #1a103c 0%, var(--bg-color) 70%);
             color: var(--text-color); 
             margin: 0; 
             padding: 20px; 
-            line-height: 1.6; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .header { 
             text-align: center; 
-            margin-bottom: 25px; 
+            margin-bottom: 20px; 
         }
         .header h1 { 
-            color: var(--primary-color); 
-            letter-spacing: 3px; 
+            background: linear-gradient(135deg, #fff 30%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; 
             margin: 0; 
             font-size: 1.8rem;
             text-transform: uppercase; 
-            text-shadow: 0 0 15px var(--primary-glow);
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
         }
         .header p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: 5px;
             letter-spacing: 1px;
         }
         
         .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
+            width: 100%;
+            max-width: 1150px; 
             background-color: var(--container-bg); 
-            border-radius: 12px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7); 
+            border-radius: 16px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(139, 92, 246, 0.15); 
             overflow: hidden; 
-            border: 1px solid var(--border-glow); 
+            border: 1px solid rgba(139, 92, 246, 0.2); 
             display: flex; 
             flex-direction: column; 
-            height: 85vh; 
+            height: 82vh; 
         }
 
+        /* Abas Superiores inspiradas na UI Moderna */
         .tabs { 
             display: flex; 
-            background-color: #090d16; 
-            border-bottom: 2px solid var(--border-color); 
+            background-color: #080b14; 
+            border-bottom: 1px solid var(--border-color); 
             overflow-x: auto; 
+            padding: 0 10px;
         }
         .tab-btn { 
             background: none; 
             border: none; 
             color: var(--text-muted); 
-            padding: 15px 25px; 
-            font-size: 14px; 
+            padding: 16px 20px; 
+            font-size: 13px; 
             font-weight: 700; 
             cursor: pointer; 
             transition: all 0.3s ease; 
             text-transform: uppercase; 
             white-space: nowrap; 
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .tab-btn:hover { 
             color: var(--text-color); 
             background: rgba(255,255,255,0.02);
         }
         .tab-btn.active { 
-            color: var(--primary-color); 
-            border-bottom: 3px solid var(--primary-color); 
-            background: rgba(245, 158, 11, 0.05);
+            color: #fff; 
+            border-bottom: 2px solid var(--primary-purple); 
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0) 0%, rgba(139, 92, 246, 0.08) 100%);
         }
 
         .tab-content { 
@@ -104,73 +115,95 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-        h2 { color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 0; font-size: 1.3rem; letter-spacing: 1px;}
-        h3 { color: #cbd5e1; margin-top: 20px; font-size: 1.1rem; }
-        ul { padding-left: 20px; }
+        h2 { color: #e2e8f0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 0; font-size: 1.2rem; letter-spacing: 1px;}
+        h3 { color: #cbd5e1; margin-top: 15px; font-size: 1rem; }
+        ul { padding-left: 20px; color: var(--text-muted); }
+        ul li { margin-bottom: 6px; }
         
         .quote { 
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, rgba(30, 41, 59, 0.5) 100%);
-            border-left: 4px solid var(--primary-color); 
-            padding: 15px; 
-            margin: 15px 0; 
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.1) 0%, rgba(15, 23, 42, 0.5) 100%);
+            border-left: 4px solid var(--primary-purple); 
+            padding: 12px 15px; 
+            margin: 12px 0; 
             font-style: italic; 
             border-radius: 0 8px 8px 0;
             color: #e2e8f0;
+            font-size: 0.9rem;
         }
 
+        /* Seção informativa do Fortnite incorporada abaixo do topo */
+        .fn-widget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .fn-card {
+            background: #080b14;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .fn-card h4 {
+            color: var(--primary-purple);
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Área de Chat & IA */
         .api-config { 
-            background: #090d16; 
-            padding: 12px 18px; 
+            background: #080b14; 
+            padding: 10px 15px; 
             border-radius: 8px; 
-            margin-bottom: 15px; 
-            font-size: 13px; 
+            margin-bottom: 12px; 
+            font-size: 12px; 
             display: flex; 
-            gap: 12px; 
+            gap: 10px; 
             align-items: center;
             border: 1px solid var(--border-color);
         }
         .api-config input { 
             flex-grow: 1; 
-            padding: 8px 12px; 
+            padding: 6px 10px; 
             background: #04060a; 
             border: 1px solid var(--border-color); 
-            color: var(--primary-color); 
-            border-radius: 6px;
+            color: var(--primary-purple); 
+            border-radius: 4px;
             font-family: monospace;
-            letter-spacing: 1px;
         }
-        .api-config input:focus { border-color: var(--primary-color); outline: none; }
+        .api-config input:focus { border-color: var(--primary-purple); outline: none; }
         .api-config span { color: var(--text-muted); font-weight: 600; }
 
         .chat-container { display: flex; flex-direction: column; height: 100%; flex-grow: 1; }
         
         .chat-box { 
             flex-grow: 1; 
-            background: #090d16; 
-            border-radius: 10px; 
-            padding: 20px; 
+            background: #080b14; 
+            border-radius: 8px; 
+            padding: 15px; 
             overflow-y: auto; 
             display: flex; 
             flex-direction: column; 
-            gap: 16px; 
+            gap: 12px; 
             border: 1px solid var(--border-color);
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
         }
         
         .message { 
             max-width: 80%; 
-            padding: 14px 18px; 
-            border-radius: 12px; 
-            line-height: 1.5; 
-            font-size: 14.5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            padding: 12px 15px; 
+            border-radius: 10px; 
+            line-height: 1.4; 
+            font-size: 14px;
             word-break: break-word;
         }
         .msg-user { 
             align-self: flex-end; 
-            background-color: var(--user-msg-bg); 
+            background: linear-gradient(135deg, var(--primary-purple), var(--accent-magenta));
             color: var(--user-msg-color); 
-            font-weight: 600; 
+            font-weight: 500; 
             border-bottom-right-radius: 2px; 
         }
         .msg-ai { 
@@ -183,31 +216,31 @@
         
         .chat-input-area { 
             display: flex; 
-            gap: 12px; 
-            margin-top: 15px; 
+            gap: 10px; 
+            margin-top: 12px; 
             align-items: center; 
         }
         .chat-input-area input { 
             flex-grow: 1; 
-            padding: 16px 20px; 
+            padding: 12px 15px; 
             border-radius: 8px; 
             border: 1px solid var(--border-glow); 
-            background: #090d16; 
+            background: #080b14; 
             color: white; 
-            font-size: 15px; 
+            font-size: 14px; 
             outline: none; 
             transition: all 0.3s;
         }
         .chat-input-area input:focus { 
-            border-color: var(--primary-color); 
+            border-color: var(--primary-purple); 
             box-shadow: 0 0 10px var(--primary-glow);
         }
         .chat-input-area button { 
-            padding: 16px 30px; 
-            background: var(--primary-color); 
-            color: #000; 
+            padding: 12px 24px; 
+            background: linear-gradient(135deg, var(--primary-purple), var(--accent-magenta));
+            color: #fff; 
             font-weight: 700; 
-            font-size: 15px; 
+            font-size: 14px; 
             border: none; 
             border-radius: 8px; 
             cursor: pointer; 
@@ -216,15 +249,74 @@
             letter-spacing: 1px;
         }
         .chat-input-area button:hover { 
-            background: #fbbf24; 
+            opacity: 0.9;
             box-shadow: 0 0 15px var(--primary-glow);
-            transform: translateY(-1px);
         }
         .chat-input-area button:disabled {
-            background: #475569;
+            background: #334155;
             cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+        }
+
+        /* Estilo para Área de Anotações */
+        .notes-area {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+        .notes-area textarea {
+            width: 100%;
+            flex-grow: 1;
+            background: #080b14;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            color: var(--text-color);
+            font-family: 'Inter', monospace;
+            font-size: 14px;
+            resize: none;
+            outline: none;
+        }
+        .notes-area textarea:focus { border-color: var(--primary-purple); }
+
+        /* Estilo Configurações */
+        .config-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .config-card {
+            background: #080b14;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .config-card label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .config-card input, .config-card select {
+            width: 100%;
+            padding: 8px 10px;
+            background: #04060a;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .save-cfg-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--primary-purple);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -232,67 +324,106 @@
 
     <div class="header">
         <h1>👑 Projeto: Transformar o Príncipe em Kyng</h1>
-        <p>Central de Comando Tática & Inteligência Artificial de Alta Performance</p>
+        <p>Interface Tática & Inteligência Artificial Avançada</p>
     </div>
 
     <div class="container">
+        <!-- Abas Superiores -->
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'chat-ia')">🤖 Kyng IA</button>
-            <button class="tab-btn" onclick="openTab(event, 'treinos')">Rotinas / Treinos</button>
-            <button class="tab-btn" onclick="openTab(event, 'regras')">Regras & Mindset</button>
-            <button class="tab-btn" onclick="openTab(event, 'analise')">Diário & Análise</button>
+            <button class="tab-btn" onclick="openTab(event, 'treinos')">🎯 Treinos & Meta</button>
+            <button class="tab-btn" onclick="openTab(event, 'anotar')">📝 Anotar Descobertas</button>
+            <button class="tab-btn" onclick="openTab(event, 'config')">⚙️ Minhas Configurações</button>
+            <button class="tab-btn" onclick="openTab(event, 'regras')">⚖️ Mindset</button>
         </div>
 
+        <!-- ABA 1: CHAT IA -->
         <div id="chat-ia" class="tab-content active">
             <div class="api-config">
-                <span>🔑 Chave API (Gemini):</span>
-                <input type="password" id="apiKeyInput" placeholder="Cole sua chave aqui para conectar a Kyng IA..." onchange="saveApiKey()">
-                <small style="color: var(--text-muted);">Salva com segurança no seu navegador</small>
+                <span>🔑 Chave API:</span>
+                <input type="password" id="apiKeyInput" placeholder="Cole sua chave Gemini aqui..." onchange="saveApiKey()">
             </div>
             
             <div class="chat-container">
                 <div class="chat-box" id="chatBox">
-                    <div class="message msg-ai">👑 Salve, Príncipe. Aqui é a <strong>Kyng IA</strong>. Meu sistema está online com o modelo atualizado de alta performance. Envie links de clipes (Medal, YouTube, Drive) ou relate suas jogadas. Onde vamos focar hoje?</div>
+                    <div class="message msg-ai">👑 Salve, Príncipe. Central ativada no visual moderno. Cole seu clipe, traga suas dúvidas do meta ou atualizações da temporada. Como posso te ajudar a subir de nível hoje?</div>
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Cole o link do seu clipe ou digite sua dúvida tática..." onkeypress="handleEnter(event)">
+                    <input type="text" id="chatInput" placeholder="Digite sua mensagem, dúvida de rotação ou link..." onkeypress="handleEnter(event)">
                     <button onclick="sendMessage()" id="sendBtn">Enviar</button>
                 </div>
             </div>
         </div>
 
+        <!-- ABA 2: TREINOS E SOBRE O FORTNITE -->
         <div id="treinos" class="tab-content">
-            <h2>🎯 SISTEMA DE CORREÇÃO DE MIRA</h2>
-            <div class="quote">"EU NÃO VOU TREINAR MINHA MIRA NO AUTOMÁTICO. EU VOU TREINAR O QUE EU ERREI."</div>
-            <h3>🎯 ERREI TRACKING</h3>
-            <p>Objetivo: manter a mira no alvo de forma consistente. Treinar controle do mouse e movimentação coordenada.</p>
-            <h3>🔫 ERREI TIROS DE RIFLE</h3>
-            <p>Objetivo: acertar primeiro, acelerar depois. Treinar timing do disparo e leitura correta do adversário.</p>
-            <h3>💥 ERREI TIROS DE DOZE</h3>
-            <p>Objetivo: transformar tiros difíceis em tiros consistentes. Crosshair placement cirúrgico e flicks ajustados.</p>
+            <h2>🎮 Painel de Conhecimento & Meta do Fortnite</h2>
+            <div class="quote">"O meta muda, mas a base mecânica e a leitura fria de jogo mantêm o Príncipe no topo."</div>
+            
+            <div class="fn-widget-grid">
+                <div class="fn-card">
+                    <h4>🎯 Foco Mecânico Atual</h4>
+                    <ul>
+                        <li>Crosshair placement cirúrgico antes de abrir edits.</li>
+                        <li>Controle absoluto de recoil de rifles em média distância.</li>
+                        <li>Desarme de box adversária com timing de troca de parede.</li>
+                    </ul>
+                </div>
+                <div class="fn-card">
+                    <h4>🗺️ Gestão de Partida</h4>
+                    <ul>
+                        <li>Priorizar posicionamento de high ground ou edge zone segura.</li>
+                        <li>Leitura antecipada de storm surge e rotas de looteamento.</li>
+                        <li>Zero combate desnecessário em rotações abertas (60Hz exige inteligência).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>🎯 Correção de Erros de Mira</h2>
+            <h3>⚡ Tracking & Flicks</h3>
+            <p>Treine focado em microcorreções. Se errou o tiro de doze, analise se abriu a mira cedo demais ou se afobou no tempo do pulo.</p>
         </div>
 
+        <!-- ABA 3: ANOTAR DESCOBERTAS -->
+        <div id="anotar" class="tab-content">
+            <h2>📝 Diário de Bordo & Descobertas do Meta</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:0;">Anote aqui segredos de mapas, bugs úteis, rotas novas de loot ou macetes descobertos nas partidas:</p>
+            <div class="notes-area">
+                <textarea id="userNotes" placeholder="Escreva suas descobertas aqui... (Salva automaticamente no navegador)" oninput="saveNotes()"></textarea>
+            </div>
+        </div>
+
+        <!-- ABA 4: CONFIGURAÇÕES -->
+        <div id="config" class="tab-content">
+            <h2>⚙️ Minhas Configurações de Jogo & Perfil</h2>
+            <div class="config-grid">
+                <div class="config-card">
+                    <label>Sensibilidade do Mouse (DPI / In-game)</label>
+                    <input type="text" id="cfgSens" placeholder="Ex: 800 DPI, 6.5% X/Y" onchange="saveConfigs()">
+                </div>
+                <div class="config-card">
+                    <label>Resolução de Vídeo / Tela</label>
+                    <input type="text" id="cfgRes" placeholder="Ex: 1920x1080 (Limitado a 60Hz)" onchange="saveConfigs()">
+                </div>
+                <div class="config-card">
+                    <label>Keybinds Principais (Build / Edits)</label>
+                    <input type="text" id="cfgBinds" placeholder="Ex: Parede no Mouse 4, Cone no Q" onchange="saveConfigs()">
+                </div>
+                <div class="config-card">
+                    <label>Meta / Versão Atual do Jogo</label>
+                    <input type="text" id="cfgMeta" placeholder="Ex: Temporada Atual / Capítulo X" onchange="saveConfigs()">
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA 5: MINDSET -->
         <div id="regras" class="tab-content">
-            <h2>⚖️ AS LEIS DO KYNG</h2>
+            <h2>⚖️ As Leis Absolutas do Kyng</h2>
             <ul>
-                <li><strong>Zero Desculpas:</strong> 60Hz e delay não determinam o teto. O foco é dominar o que está sob o seu controle.</li>
-                <li><strong>Propósito Real:</strong> Cada sessão de treino deve ter um alvo claro de correção, nunca jogar por jogar.</li>
+                <li><strong>Zero Desculpas:</strong> 60Hz e hardware modesto não definem limite. Inteligência tática compensa qualquer desvantagem mecânica.</li>
+                <li><strong>Adaptação Dinâmica:</strong> Atualizou o jogo? A gente aprende o meta em minutos e tira vantagem disso.</li>
+                <li><strong>Consistência Diária:</strong> Progresso real se mede a longo prazo contra você mesmo.</li>
             </ul>
-            <h3>⚔️️ REGRA DA DESVANTAGEM</h3>
-            <p>O adversário tem o melhor setup do mercado? Perfeito. Jogue de forma mais inteligente, fria e letal dentro das suas limitações.</p>
-            <h3>📈 REGRA DOS 30 DIAS</h3>
-            <p>Nunca julgue seu progresso por uma partida ruim isolada. A única métrica válida é: *Eu hoje comparado a mim mesmo há 30 dias*.</p>
-        </div>
-
-        <div id="analise" class="tab-content">
-            <h2>📊 ANÁLISE DE VÍDEOS E EVOLUÇÃO</h2>
-            <p>Mantenha o registro diário atualizado para alimentar sua consistência:</p>
-            <ul>
-                <li>⭐ **A Jogada Chave:** O momento exato em que a leitura de jogo deu frutos perfeitos.</li>
-                <li>❌ **O Ponto de Falha:** O erro crítico na troca de tiro que custou a eliminação.</li>
-                <li>🧠 **A Lição:** O aprendizado tático extraído para nunca mais repetir o mesmo deslize.</li>
-            </ul>
-            <div class="quote">"O Príncipe vai evoluir em silêncio absoluto até que o nível fale por ele e ele assuma o trono."</div>
         </div>
     </div>
 
@@ -308,6 +439,7 @@
         const chatInput = document.getElementById('chatInput');
         const apiKeyInput = document.getElementById('apiKeyInput');
         const sendBtn = document.getElementById('sendBtn');
+        const userNotes = document.getElementById('userNotes');
 
         window.onload = () => {
             const savedKey = localStorage.getItem('kyng_api_key');
@@ -318,9 +450,26 @@
                 chatBox.innerHTML = savedChat;
                 scrollToBottom();
             }
+
+            const savedNotesContent = localStorage.getItem('kyng_notes');
+            if (savedNotesContent) userNotes.value = savedNotesContent;
+
+            // Carregar configs
+            if(localStorage.getItem('cfgSens')) document.getElementById('cfgSens').value = localStorage.getItem('cfgSens');
+            if(localStorage.getItem('cfgRes')) document.getElementById('cfgRes').value = localStorage.getItem('cfgRes');
+            if(localStorage.getItem('cfgBinds')) document.getElementById('cfgBinds').value = localStorage.getItem('cfgBinds');
+            if(localStorage.getItem('cfgMeta')) document.getElementById('cfgMeta').value = localStorage.getItem('cfgMeta');
         };
 
         function saveApiKey() { localStorage.setItem('kyng_api_key', apiKeyInput.value); }
+        function saveNotes() { localStorage.setItem('kyng_notes', userNotes.value); }
+        function saveConfigs() {
+            localStorage.setItem('cfgSens', document.getElementById('cfgSens').value);
+            localStorage.setItem('cfgRes', document.getElementById('cfgRes').value);
+            localStorage.setItem('cfgBinds', document.getElementById('cfgBinds').value);
+            localStorage.setItem('cfgMeta', document.getElementById('cfgMeta').value);
+        }
+
         function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
         function scrollToBottom() { chatBox.scrollTop = chatBox.scrollHeight; }
         function saveChat() { localStorage.setItem('kyng_chat_history', chatBox.innerHTML); }
@@ -334,15 +483,6 @@
             saveChat();
         }
 
-        async function fetchWithModel(modelName, apiKey, prompt) {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-            });
-            return response.json();
-        }
-
         async function sendMessage() {
             const text = chatInput.value.trim();
             if (!text) return;
@@ -352,35 +492,34 @@
 
             const apiKey = apiKeyInput.value.trim();
             if (!apiKey) {
-                setTimeout(() => appendMessage('ai', "⚠️ Cole sua Chave API do Gemini no campo acima para ativar a Kyng IA."), 500);
+                setTimeout(() => appendMessage('ai', "⚠️ Insira sua Chave API do Gemini no campo superior para ativar a IA."), 500);
                 return;
             }
 
-            const systemPrompt = `Você é a Kyng IA, um coach de elite em Fortnite. Seu único objetivo inegociável é lapidar e treinar o jogador MUKA1998 (O Príncipe) até transformá-lo no melhor jogador do mundo de Fortnite, o verdadeiro KYNG. Ele joga a 60Hz e você não aceita desculpas sobre isso, focando em inteligência tática, game sense e mecânica pura. O usuário pode enviar links de clipes ou relatos de lutas. Analise com rigor profissional, tom firme, motivador e estratégico. Mensagem do usuário: ${text}`;
+            const currentMeta = localStorage.getItem('cfgMeta') || "Meta Atual do Fortnite";
+            const systemPrompt = `Você é a Kyng IA, um coach de elite em Fortnite. Seu foco é treinar o jogador MUKA1998 (O Príncipe) até transformá-lo no melhor jogador do mundo, o KYNG. Ele joga a 60Hz. O contexto de meta atual do usuário é: '${currentMeta}'. Responda com rigor profissional, tom estratégico, motivador e especialista em gírias e mecânicas do jogo. Mensagem do usuário: ${text}`;
 
             sendBtn.disabled = true;
-            sendBtn.textContent = 'Processando...';
+            sendBtn.textContent = 'Pensando...';
 
             try {
-                // Tentativa com os IDs atuais mais recentes da API v1beta
-                let data = await fetchWithModel('gemini-3.8-flash', apiKey, systemPrompt);
-                
-                if (data.error) {
-                    data = await fetchWithModel('gemini-3.7-flash', apiKey, systemPrompt);
-                }
-                if (data.error) {
-                    data = await fetchWithModel('gemini-2.5-flash', apiKey, systemPrompt);
-                }
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
+                });
+
+                const data = await response.json();
 
                 if (data.error) {
                     appendMessage('ai', `Erro na API: ${data.error.message}`);
                 } else if (data.candidates && data.candidates[0].content) {
                     appendMessage('ai', data.candidates[0].content.parts[0].text);
                 } else {
-                    appendMessage('ai', "Erro inesperado na resposta da API. Verifique sua chave.");
+                    appendMessage('ai', "Erro na resposta da API. Verifique sua chave.");
                 }
             } catch (error) {
-                appendMessage('ai', "Erro de conexão. Verifique sua internet ou a validade da Chave API.");
+                appendMessage('ai', "Erro de conexão com a API do Gemini.");
             } finally {
                 sendBtn.disabled = false;
                 sendBtn.textContent = 'Enviar';

@@ -67,7 +67,6 @@
             height: 82vh; 
         }
 
-        /* Abas Superiores inspiradas na UI Moderna */
         .tabs { 
             display: flex; 
             background-color: #080b14; 
@@ -131,7 +130,6 @@
             font-size: 0.9rem;
         }
 
-        /* Seção informativa do Fortnite incorporada abaixo do topo */
         .fn-widget-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -153,7 +151,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Área de Chat & IA */
         .api-config { 
             background: #080b14; 
             padding: 10px 15px; 
@@ -257,7 +254,6 @@
             cursor: not-allowed;
         }
 
-        /* Estilo para Área de Anotações */
         .notes-area {
             width: 100%;
             height: 100%;
@@ -281,7 +277,6 @@
         }
         .notes-area textarea:focus { border-color: var(--primary-purple); }
 
-        /* Estilo Configurações */
         .config-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -308,16 +303,6 @@
             border-radius: 6px;
             box-sizing: border-box;
         }
-        .save-cfg-btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--primary-purple);
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -328,7 +313,6 @@
     </div>
 
     <div class="container">
-        <!-- Abas Superiores -->
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'chat-ia')">🤖 Kyng IA</button>
             <button class="tab-btn" onclick="openTab(event, 'treinos')">🎯 Treinos & Meta</button>
@@ -346,7 +330,7 @@
             
             <div class="chat-container">
                 <div class="chat-box" id="chatBox">
-                    <div class="message msg-ai">👑 Salve, Príncipe. Central ativada no visual moderno. Cole seu clipe, traga suas dúvidas do meta ou atualizações da temporada. Como posso te ajudar a subir de nível hoje?</div>
+                    <div class="message msg-ai">👑 Salve, Príncipe. Modelo atualizado para o `gemini-3.8-flash` com sucesso. Como posso te ajudar a subir de nível hoje?</div>
                 </div>
                 <div class="chat-input-area">
                     <input type="text" id="chatInput" placeholder="Digite sua mensagem, dúvida de rotação ou link..." onkeypress="handleEnter(event)">
@@ -454,7 +438,6 @@
             const savedNotesContent = localStorage.getItem('kyng_notes');
             if (savedNotesContent) userNotes.value = savedNotesContent;
 
-            // Carregar configs
             if(localStorage.getItem('cfgSens')) document.getElementById('cfgSens').value = localStorage.getItem('cfgSens');
             if(localStorage.getItem('cfgRes')) document.getElementById('cfgRes').value = localStorage.getItem('cfgRes');
             if(localStorage.getItem('cfgBinds')) document.getElementById('cfgBinds').value = localStorage.getItem('cfgBinds');
@@ -503,7 +486,8 @@
             sendBtn.textContent = 'Pensando...';
 
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+                // Atualizado para o modelo gemini-3.8-flash recomendado
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })

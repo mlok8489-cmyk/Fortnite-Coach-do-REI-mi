@@ -1,56 +1,34 @@
-<div align="center">
+# 👑 Projeto MUKA1998 | O Rei Absoluto do Fortnite BR
 
-  # 👑 PROJETO MUKA1998 👑
-  ### O Trono é Meu • O Rei Absoluto e Lendário do Fortnite BR
-  
-  <p align="center">
-    <img src="https://img.shields.io/badge/STATUS-EM_EVOLUÇÃO_CONSTANTE-yellow?style=for-the-badge&logo=firewall&logoColor=black" alt="Status">
-    <img src="https://img.shields.io/badge/JOGO-FORTNITE_COMPETITIVO-blue?style=for-the-badge&logo=epicgames&logoColor=white" alt="Fortnite">
-    <img src="https://img.shields.io/badge/IA-GEMINI_1.5_FLASH-purple?style=for-the-badge&logo=google&logoColor=white" alt="Gemini">
-  </p>
-
-  <p align="center">
-    <i>"O meta muda, o hardware é superado pela inteligência, mas a coroa do Rei permanece eterna."</i>
-  </p>
-
-</div>
+Bem-vindo ao repositório oficial do **Projeto MUKA1998**, a central de inteligência e QG tático desenvolvida para o Rei Absoluto e lendário jogador do Fortnite BR.
 
 ---
 
-## ⚡ Sobre o Projeto
+## 🎮 Sobre o Projeto
 
-O **Projeto MUKA1998** não é apenas uma interface de inteligência artificial ou um setup de jogo: é um sistema tático de alta performance desenvolvido exclusivamente para o **Príncipe (MUKA1998 / Boar1principeBR / IKV_PRINCIPE_REI)** dominar o cenário competitivo do Fortnite BR. 
+Este painel foi construído para ser muito mais do que um simples chat: é uma interface de e-sports moderna, customizada com visual cartoon/cel-shading inspirado no universo do Fortnite, integrada diretamente com a inteligência artificial do Google (`gemini-3.8-flash`) para respostas ultrarrápidas, suporte a histórico de conversas (`previous_interaction_id`) e resiliência com tentativas automáticas (Retry).
 
-Aqui, a IA assume o papel de **Coach de Elite**, conhecendo a fundo cada configuração de sensibilidade, as limitações superadas de hardware (60Hz) e o foco absoluto em mecânica, mira e leitura de lobby para alcançar o topo.
-
----
-
-## 🛠️ Tecnologias & Arquitetura
-
-O painel foi construído utilizando tecnologias modernas para garantir velocidade máxima, design agressivo e funcionamento direto no navegador:
-* **Frontend:** HTML5, Tailwind CSS (Design System escuro/ouro de e-sports) & FontAwesome.
-* **Inteligência Artificial:** Google Gemini API (`gemini-1.5-flash`) integrada via JavaScript nativo com Prompt Mestre contextual.
-* **Armazenamento Local (`localStorage`):** Salva automaticamente suas chaves, configurações de sensibilidade e o diário de bordo diretamente no seu computador.
+### ✨ Principais Recursos da Interface & IA
+* **Visual Estilo Fortnite / Lobby:** Cores vibrantes (roxo tormenta, amarelo estrela de batalha e azul escudo) com bordas sólidas e sombras em relevo.
+* **Versatilidade Total de Diálogo:** A IA debate qualquer assunto trazido por você (vida, tecnologia, estratégia ou entretenimento), mantendo o foco supremo.
+* **Objetivo Dedicado:** Sempre que questionada sobre o seu propósito, a IA responde de forma formal, solene e imponente sobre a missão de transformá-lo na lenda viva do Fortnite BR.
+* **Memória de Conversa & Velocidade:** Histórico encadeado para lembrar de todas as orientações dadas nos turnos anteriores, aliado a um motor de baixíssima latência.
+* **HUD do Jogador:** Salvamento local de DPI, sensibilidade do mouse, keybinds e otimizações de hardware (60Hz) direto no navegador via `localStorage`.
 
 ---
 
-## ⚖️ As Leis Absolutas do Rei
+## 🚀 Como Usar
 
-1. **Zero Desculpas:** 60Hz e hardware modesto não definem limites. A inteligência tática compensa qualquer desvantagem mecânica.
-2. **Treino com Propósito:** Errar é dado técnico. Errou o *tracking* ou o tiro de doze? Analise o erro, ajuste a mira e execute melhor na próxima.
-3. **O Único Adversário:** O único oponente real a ser batido todos os dias é o **"EU DE ONTEM"**.
-
----
-
-## 🚀 Como Executar o Painel
-
-1. Baixe ou crie o arquivo **`muka1998.html`** no seu computador.
-2. Dê dois cliques para abri-lo em qualquer navegador moderno (Chrome, Edge, Brave).
-3. Insira sua **Gemini API Key** no campo superior direito do painel e clique em **Salvar**.
-4. Configure suas preferências na barra lateral e comece a trocar call com a **IA Coach do MUKA1998**!
+1. Baixe ou salve o arquivo principal como `muka1998.html` no seu computador.
+2. Abra o arquivo em **qualquer navegador moderno** (Google Chrome, Edge, Brave, etc.).
+3. Insira sua **Gemini API Key** no campo localizado no canto superior direito e clique em **Salvar**.
+4. Configure suas sensibilidades no painel lateral esquerdo e comece a conversar com o seu Coach particular!
 
 ---
 
-<div align="center">
-  <b>O topo do Fortnite BR aguarda. O título corre atrás de quem veste a coroa. 👑🔥</b>
-</div>
+## 📜 Código do MUKA
+
+> *"Zero desculpas: 60Hz e lag não definem o meu topo. O único adversário real é o EU DE ONTEM."*
+
+---
+Projeto MUKA1998 • O Trono Pertence ao Rei Absoluto. 👑🔥

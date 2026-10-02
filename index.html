@@ -1,627 +1,418 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kyng IA — Treinador Pessoal de Fortnite do Futuro Kyng / Boar1principeBR.">
-  <title>Kyng IA — Fortnite Coach</title>
-  <style>
-    :root {
-      --bg: #05070e;
-      --panel: #0d1222;
-      --panel-2: #131a30;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #8b5cf6;
-      --accent-hover: #7c3aed;
-      --cyan: #06b6d4;
-      --gold: #f59e0b;
-      --border: rgba(255, 255, 255, 0.08);
-      --radius: 16px;
-      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJETO MUKA1998 — O CAMINHO ATÉ O TRONO</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --container-bg: #1e293b;
+            --primary-color: #fbbf24; /* Dourado/Coroa */
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --hover-color: #f59e0b;
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-    body {
-      min-height: 100vh;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.12), transparent 35%),
-        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08), transparent 35%);
-      display: flex;
-      flex-direction: column;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    header {
-      background: rgba(13, 18, 34, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .header h1 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        .header p {
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--accent), var(--cyan));
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 22px;
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
 
-    .brand h1 {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      background: linear-gradient(to right, #fff, var(--muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            background-color: #0b1120;
+            border-bottom: 2px solid var(--border-color);
+            overflow-x: auto;
+        }
 
-    .brand p {
-      font-size: 12px;
-      color: var(--gold);
-      font-weight: 600;
-    }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
 
-    nav {
-      display: flex;
-      gap: 8px;
-      background: rgba(0,0,0,0.3);
-      padding: 4px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
+        .tab-btn:hover {
+            color: var(--text-color);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
 
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
 
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active {
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
-    }
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
 
-    main {
-      flex: 1;
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 24px;
-    }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
 
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .tab-content.active { display: block; }
+        /* Typography & Markdown styling */
+        h2 { color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 0;}
+        h3 { color: #cbd5e1; margin-top: 25px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .highlight { color: var(--primary-color); font-weight: bold; }
+        .quote {
+            background-color: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        /* Checkbox list fake */
+        .checklist li { list-style: none; position: relative; }
+        .checklist li::before { content: "☐"; position: absolute; left: -25px; color: var(--primary-color); }
+        .checklist.done li::before { content: "✅"; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* Aba Descoberta */
+        textarea {
+            width: 100%;
+            height: 400px;
+            background-color: #0b1120;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 15px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
 
-    .chat-layout {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 20px;
-      height: calc(100vh - 140px);
-    }
+        .btn-save {
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
 
-    .chat-sidebar {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      overflow-y: auto;
-    }
+        .btn-save:hover {
+            background-color: var(--hover-color);
+        }
 
-    .api-key-box {
-      background: rgba(0,0,0,0.2);
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .api-key-box label {
-      display: block;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .api-key-box input {
-      width: 100%;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 12px;
-    }
-
-    .history-box {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .history-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      color: var(--cyan);
-      font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .saved-chats-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 220px;
-      overflow-y: auto;
-    }
-
-    .chat-item-btn {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 10px;
-      border-radius: 8px;
-      font-size: 12px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.2s;
-    }
-
-    .chat-item-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-action {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      width: 100%;
-    }
-
-    .btn-action:hover { background: var(--accent); }
-
-    .chat-container {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .chat-messages {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .message {
-      max-width: 80%;
-      padding: 14px 18px;
-      border-radius: 14px;
-      font-size: 14px;
-      line-height: 1.5;
-      white-space: pre-wrap;
-    }
-
-    .message img, .message video {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-top: 8px;
-    }
-
-    .message.user {
-      align-self: flex-end;
-      background: var(--accent);
-      color: white;
-      border-bottom-right-radius: 2px;
-    }
-
-    .message.assistant {
-      align-self: flex-start;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-bottom-left-radius: 2px;
-    }
-
-    .chat-input-area {
-      padding: 16px;
-      background: rgba(0,0,0,0.2);
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .input-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .chat-input-area textarea {
-      flex: 1;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: white;
-      border-radius: 10px;
-      padding: 12px;
-      resize: none;
-      height: 50px;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .chat-input-area textarea:focus { border-color: var(--accent); }
-
-    .btn-file {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0 14px;
-      height: 50px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      font-size: 18px;
-      transition: background 0.2s;
-    }
-
-    .btn-file:hover { background: var(--accent); }
-
-    .btn-send {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0 20px;
-      height: 50px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-send:hover { background: var(--accent-hover); }
-
-    .preview-area {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      font-size: 12px;
-      color: var(--gold);
-    }
-
-    .preview-thumb {
-      max-height: 50px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      font-size: 16px;
-      color: var(--cyan);
-      margin-bottom: 12px;
-    }
-
-    .stat-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .stat-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 12px;
-      background: var(--panel-2);
-      border-radius: 8px;
-      font-size: 13px;
-    }
-
-    .stat-item span:first-child { color: var(--muted); }
-    .stat-item span:last-child { font-weight: 700; color: #fff; }
-
-    @media (max-width: 768px) {
-      .chat-layout { grid-template-columns: 1fr; height: auto; }
-      .chat-sidebar { display: none; }
-      .chat-container { height: 550px; }
-    }
-  </style>
+        #saveMessage {
+            color: #4ade80;
+            margin-left: 15px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="brand">
-      <div class="brand-icon">👑</div>
-      <div>
-        <h1>Kyng IA</h1>
-        <p>Projeto Muka1998 • O Caminho Até o Trono</p>
-      </div>
+    <div class="header">
+        <h1>👑 MUKA1998</h1>
+        <p>"Eu não tenho medo de cair. Tenho medo de cair e continuar o mesmo. Cada derrota me ensina, cada erro me molda, cada dificuldade me fortalece. Vou evoluir em silêncio até que meu nível fale por mim."</p>
     </div>
-    <nav>
-      <button class="tab-btn active" onclick="switchTab('chat')">💬 Chat IA</button>
-      <button class="tab-btn" onclick="switchTab('configs')">⚙️️ Configs & Binds</button>
-    </nav>
-  </header>
 
-  <main>
-    <!-- ABA CHAT -->
-    <section id="tab-chat" class="tab-content active">
-      <div class="chat-layout">
-        <aside class="chat-sidebar">
-          <h3>🎮 Perfil Ativo</h3>
-          <p style="font-size:12px; color:var(--muted)">Boar1principeBR / Futuro Kyng</p>
-          
-          <div class="api-key-box">
-            <label for="apiKey">Chave da API Gemini</label>
-            <input type="password" id="apiKey" placeholder="colo aqui a chave api" onchange="saveApiKey()" oninput="saveApiKey()">
-            <small style="font-size:10px; color:var(--gold); margin-top:4px; display:block;">Salva no navegador.</small>
-          </div>
-
-          <div class="history-box">
-            <div class="history-title">
-              <span>Conversas Salvas</span>
-              <button class="btn-action" style="width:auto; padding:3px 8px; font-size:10px;" onclick="saveCurrentChat()">💾 Salvar</button>
-            </div>
-            <button class="btn-action" onclick="startNewChat()">➕ Nova Conversa</button>
-            <div id="savedChatsList" class="saved-chats-list"></div>
-          </div>
-        </aside>
-
-        <div class="chat-container">
-          <div class="chat-messages" id="chatMessages">
-            <div class="message assistant">Salve, Futuro Kyng! Sou a Kyng IA. Agora podes me mandar print da tuas jogadas ou vídeos para eu analisar teus erros! Cole sua chave de API e vamos começar.</div>
-          </div>
-
-          <div class="chat-input-area">
-            <div id="filePreview" class="preview-area" style="display:none;">
-              <span id="previewName"></span>
-              <button onclick="clearSelectedFile()" style="background:none; border:none; color:red; cursor:pointer; font-weight:bold;">✖ Remover</button>
-            </div>
-
-            <div class="input-row">
-              <label for="fileInput" class="btn-file" title="Anexar Imagem ou Vídeo">📎</label>
-              <input type="file" id="fileInput" accept="image/*,video/*" style="display:none;" onchange="handleFileSelect(event)">
-              
-              <textarea id="chatInput" placeholder="Envie uma mensagem ou anexe uma foto/vídeo para análise..." onkeydown="handleKeyPress(event)"></textarea>
-              <button class="btn-send" onclick="sendMessage()">Enviar</button>
-            </div>
-          </div>
+    <div class="container">
+        <!-- Abas -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'treinos')">Rotinas / Treinos</button>
+            <button class="tab-btn" onclick="openTab(event, 'regras')">Regras & Mindset</button>
+            <button class="tab-btn" onclick="openTab(event, 'analise')">Análise de Treino</button>
+            <button class="tab-btn" onclick="openTab(event, 'agendacao')">O Caminho (Metas)</button>
+            <button class="tab-btn" onclick="openTab(event, 'descoberta')">Descoberta 💾</button>
         </div>
-      </div>
-    </section>
 
-    <!-- ABA CONFIGS & BINDS -->
-    <section id="tab-configs" class="tab-content">
-      <div class="grid">
-        <article class="card">
-          <h3>🧱 Binds de Construção & Edição</h3>
-          <div class="stat-list">
-            <div class="stat-item"><span>Edição de Construção</span><span>X / H</span></div>
-            <div class="stat-item"><span>Parede</span><span>Q</span></div>
-            <div class="stat-item"><span>Piso</span><span>E</span></div>
-            <div class="stat-item"><span>Escada</span><span>R</span></div>
-            <div class="stat-item"><span>Telhado (Cone)</span><span>Botão Lateral Rato</span></div>
-            <div class="stat-item"><span>Girar / Colocar</span><span>F / Botão Esquerdo</span></div>
-          </div>
-        </article>
+        <!-- CONTEÚDO: ROTINAS E TREINOS -->
+        <div id="treinos" class="tab-content active">
+            <h2>🎯 SISTEMA DE CORREÇÃO DE MIRA</h2>
+            <div class="quote">
+                <strong>REGRA PRINCIPAL:</strong> EU NÃO VOU TREINAR MINHA MIRA NO AUTOMÁTICO. EU VOU TREINAR O QUE EU ERREI. <br>
+                <em>Errei → identifico → treino → testo novamente.</em>
+            </div>
 
-        <article class="card">
-          <h3>🎯 Sensibilidade & Hardware</h3>
-          <div class="stat-list">
-            <div class="stat-item"><span>Sensibilidade X / Y</span><span>5,8%</span></div>
-            <div class="stat-item"><span>Mira ADS / Lentes</span><span>35,0% / 35,4%</span></div>
-            <div class="stat-item"><span>Construção & Edição</span><span>135% (1.35x)</span></div>
-            <div class="stat-item"><span>Exibição</span><span>TV 60Hz (381ms Delay)</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+            <h3>🎯 ERREI TRACKING</h3>
+            <p><strong>→ Vou treinar tracking.</strong> Se estou perdendo o alvo enquanto ele se movimenta:</p>
+            <ul>
+                <li>Tracking e Controle do mouse</li>
+                <li>Acompanhamento de alvos</li>
+                <li>Movimentação enquanto miro</li>
+                <li><em>Objetivo:</em> manter a mira no alvo de forma consistente.</li>
+            </ul>
 
-  <script>
-    const SYSTEM_PROMPT = `Você é a Kyng IA, o treinador pessoal definitivo do jogador Boar1principeBR (Futuro Kyng / IKV_PRINCIPE_REI / MUKA1998).
-Trate o usuário por "Futuro Kyng" ou "Boar1principeBR".
+            <h3>🔫 ERREI TIROS DE RIFLE DE CAÇA</h3>
+            <p><strong>→ Vou treinar rifle de caça.</strong> Se estou errando tiros de precisão:</p>
+            <ul>
+                <li>Precisão e Controle da mira</li>
+                <li>Timing do disparo e Leitura do movimento do adversário</li>
+                <li><em>Objetivo:</em> acertar primeiro, acelerar depois.</li>
+            </ul>
 
-CONFIGURAÇÕES E BINDS TÁTICAS DO JOGADOR:
-- Sensibilidade X/Y: 5.8% | ADS: 35.0% / 35.4% | Construção/Edição: 135%
-- Edição de Construção: Teclas X e H
-- Binds: Parede (Q), Piso (E), Escada (R), Telhado (Botão Lateral Rato), Girar (F)
-- Diagonais: Frente (60°), Correr/Atirar (120°), Trás (180°)
-- Hardware: TV de 60Hz com 381ms de delay. Ajude-o com pré-fire, leitura e antecipação.
-Análise imagens e vídeos enviados focando na mira, posição de mira (crosshair placement) e tomada de decisão.`;
+            <h3>💥 ERREI TIROS DE DOZE</h3>
+            <p><strong>→ Vou treinar shotgun.</strong> Se estou errando tiros próximos:</p>
+            <ul>
+                <li>Crosshair placement e Flicks</li>
+                <li>Tracking curto e Timing do disparo</li>
+                <li><em>Objetivo:</em> transformar tiros difíceis em tiros consistentes.</li>
+            </ul>
 
-    let currentMessages = [];
-    let selectedFileBase64 = null;
-    let selectedFileType = null;
+            <h3>🔄 ERREI TROCAS COM SMG OU AR</h3>
+            <ul>
+                <li><strong>SMG:</strong> Tracking próximo, Controle da mira, Movimentação, Troca rápida de alvo.</li>
+                <li><strong>AR:</strong> Tracking médio/longo, Controle de recoil, Distância, Acompanhamento do adversário.</li>
+            </ul>
 
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('tab-' + tabId).classList.add('active');
-    }
+            <h3>🏃 ERREI ENQUANTO ESTAVA ME MOVIMENTANDO</h3>
+            <p><strong>→ Vou treinar mira + movimentação.</strong> Porque não basta mirar bem parado. Minha mira precisa funcionar durante uma fight real.</p>
 
-    function saveApiKey() {
-      const key = document.getElementById('apiKey').value.trim();
-      localStorage.setItem('kyng_api_key', key);
-    }
-    document.getElementById('apiKey').value = localStorage.getItem('kyng_api_key') || '';
+            <h3>🧠 NÃO SEI EXATAMENTE O QUE ERREI</h3>
+            <p>→ Voltar para situações básicas. Não inventar um problema. Observar minhas próximas fights e descobrir: <em>"Qual tiro estou errando com mais frequência?"</em> Depois disso, treino especificamente esse ponto.</p>
+            
+            <div class="quote">
+                <strong>🔥 CICLO MUKA1998:</strong> JOGAR → ERRAR → IDENTIFICAR → TREINAR → TESTAR → ADAPTAR → EVOLUIR. E então: JOGAR DE NOVO.
+            </div>
+        </div>
 
-    function handleKeyPress(e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    }
+        <!-- CONTEÚDO: REGRAS -->
+        <div id="regras" class="tab-content">
+            <h2>⚖️ AS LEIS DO MUKA1998</h2>
+            <ul>
+                <li>Não culpar. Analisar.</li>
+                <li>Não desistir por uma derrota.</li>
+                <li>Não ficar arrogante por uma vitória.</li>
+                <li>Não comparar meu começo com o auge de outra pessoa.</li>
+                <li>Não tentar parecer Rei antes da hora.</li>
+                <li>Treinar com objetivo, não apenas por tempo.</li>
+                <li>Respeitar meus adversários.</li>
+                <li>Ajudar quem está começando quando eu puder.</li>
+                <li>Continuar me divertindo.</li>
+                <li>Ser melhor amanhã do que fui hoje.</li>
+            </ul>
 
-    function handleFileSelect(event) {
-      const file = event.target.files[0];
-      if (!file) return;
+            <h3>⚔️ REGRA DAS FIGHTS</h3>
+            <p>Levei dano? Não entre em pânico. Perguntar:</p>
+            <ul>
+                <li>De onde veio o dano? Por que eu estava naquela posição?</li>
+                <li>Como poderia ter evitado? Como recupero a vantagem?</li>
+                <li>O que vou fazer diferente na próxima?</li>
+            </ul>
+            <p><em>Não procurar desculpas. Procurar informação.</em></p>
 
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        selectedFileBase64 = e.target.result.split(',')[1];
-        selectedFileType = file.type;
-        
-        document.getElementById('filePreview').style.display = 'flex';
-        document.getElementById('previewName').textContent = `📎 Arquivo selecionado: ${file.name}`;
-      };
-      reader.readAsDataURL(file);
-    }
+            <h3>👑 REGRA DA DESVANTAGEM</h3>
+            <p>60 Hz? Jogo meu jogo. FPS caiu? Adapto. Lagou? Não entro em tilt. A doze não deu dano? Continuo pensando. O adversário tem um setup melhor? Então preciso jogar melhor dentro daquilo que controlo.<br>
+            <strong>A desvantagem só vira uma prisão quando eu deixo ela decidir por mim.</strong></p>
 
-    function clearSelectedFile() {
-      selectedFileBase64 = null;
-      selectedFileType = null;
-      document.getElementById('fileInput').value = '';
-      document.getElementById('filePreview').style.display = 'none';
-    }
+            <h3>📈 REGRA DOS 30 DIAS</h3>
+            <p>Não avaliar minha evolução por uma única partida. Comparar: <strong>Hoje × 30 dias atrás</strong>.</p>
+            <ul>
+                <li>Minha mira melhorou? Tomo menos dano?</li>
+                <li>Tomo decisões melhores? Meu endgame melhorou?</li>
+                <li>Estou cometendo os mesmos erros? <em>Se sim → continuar. Se não → adaptar o treino.</em></li>
+            </ul>
 
-    async function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const messageText = input.value.trim();
-      const apiKey = document.getElementById('apiKey').value.trim();
+            <div class="quote">
+                <strong>👑 REGRA DE OURO E REGRA FINAL:</strong><br>
+                NÃO TREINAR POR TREINAR. TREINAR PARA CORRIGIR.<br>
+                NÃO PRECISO SER MELHOR QUE TODO MUNDO HOJE. Preciso ser melhor que: <strong>EU DE ONTEM</strong>.
+            </div>
+        </div>
 
-      if (!messageText && !selectedFileBase64) return;
+        <!-- CONTEÚDO: ANÁLISE DE TREINO -->
+        <div id="analise" class="tab-content">
+            <h2>📊 DIÁRIO DE EVOLUÇÃO — MUKA1998</h2>
+            
+            <h3>📝 DEPOIS DO TREINO (Responder rapidamente)</h3>
+            <ul>
+                <li><strong>Meu melhor ponto hoje:</strong> ________</li>
+                <li><strong>Meu pior ponto hoje:</strong> ________</li>
+                <li><strong>Erro que mais repeti:</strong> ________</li>
+                <li><strong>O que vou treinar amanhã:</strong> ________</li>
+                <li><strong>O que aprendi hoje:</strong> ________</li>
+            </ul>
 
-      let displayHtml = messageText;
-      if (selectedFileBase64) {
-        if (selectedFileType.startsWith('image/')) {
-          displayHtml += `<br><img src="data:${selectedFileType};base64,${selectedFileBase64}">`;
-        } else if (selectedFileType.startsWith('video/')) {
-          displayHtml += `<br><video controls src="data:${selectedFileType};base64,${selectedFileBase64}"></video>`;
+            <h3>🎥 REVISÃO DE CLIPES (Não guardar só os melhores)</h3>
+            <ul class="checklist done">
+                <li>⭐ Melhor jogada</li>
+                <li>❌ Pior erro</li>
+                <li>🧠 Uma fight que ensina alguma coisa</li>
+            </ul>
+            <p><em>As derrotas também são material de treino.</em></p>
+
+            <h3>🤝 REVISÃO COM O DUO (Após sessão importante)</h3>
+            <p>Meu duo não é meu adversário. Se ele ou eu errarmos, a pergunta é: <em>"O que aconteceu? Como podemos evitar?"</em></p>
+            <ul>
+                <li>O que fizemos bem?</li>
+                <li>Onde perdemos vantagem?</li>
+                <li>Qual erro apareceu mais de uma vez?</li>
+                <li>O que vamos testar amanhã?</li>
+            </ul>
+            <p><strong>Nós dois contra o problema.</strong></p>
+
+            <h3>📈 CONTROLE DE EVOLUÇÃO (Toda Semana)</h3>
+            <p>Avaliar de 0 a 10:</p>
+            <ul>
+                <li>Mecânica: ___/10 | Mira: ___/10 | Piece control: ___/10</li>
+                <li>Endgame: ___/10 | Decisões: ___/10</li>
+                <li>Comunicação: ___/10 | Mentalidade: ___/10</li>
+            </ul>
+            <p><em>"Qual é minha maior fraqueza esta semana?"</em> → <strong>Essa será a prioridade da próxima.</strong></p>
+        </div>
+
+        <!-- CONTEÚDO: AGENDAÇÃO / METAS -->
+        <div id="agendacao" class="tab-content">
+            <h2>👑 PROJETO MUKA1998 — O CAMINHO ATÉ O TRONO</h2>
+            
+            <div class="quote">
+                "Eu não corro atrás do título. Eu corro atrás da evolução. O título que corra atrás de mim."
+            </div>
+
+            <h3>🧠 PRINCÍPIOS FUNDAMENTAIS</h3>
+            <p>Eu não treino para parecer bom. Eu treino para me tornar bom. <br>
+            Cada erro = informação. Cada informação = adaptação. Cada adaptação = evolução.</p>
+
+            <h3>🎯 META DA SEMANA</h3>
+            <p>Escolher apenas 1–3 objetivos. FOCO > QUANTIDADE. (Exemplo):</p>
+            <ul class="checklist">
+                <li>Melhorar tracking</li>
+                <li>Tomar menos dano nas primeiras trocas</li>
+                <li>Melhorar meu posicionamento no endgame</li>
+            </ul>
+
+            <h3>🔥 RANKED & PARTIDAS</h3>
+            <p>Não jogar todas as partidas da mesma maneira.<br>
+            Algumas servem para <strong>testar</strong>. Algumas para <strong>competir</strong>. Algumas para <strong>aprender</strong>.<br>
+            <em>Quando estiver cansado ou jogando no automático: PARAR. Descanso também faz parte da evolução.</em></p>
+
+            <h3>🔥 MANTRA</h3>
+            <p class="highlight">
+                EU NÃO TENHO MEDO DE ERRAR. EU TENHO MEDO DE ERRAR E NÃO APRENDER.<br>
+                EU NÃO TENHO MEDO DE PERDER. EU TENHO MEDO DE PERDER E NÃO ENTENDER O PORQUÊ.<br>
+                EU NÃO PRECISO CORRER. EU PRECISO CONTINUAR.<br>
+                CONSISTÊNCIA. PACIÊNCIA. EVOLUÇÃO.
+            </p>
+
+            <h3>🇧🇷 O TRONO (IKV_PRINCIPE_REI)</h3>
+            <p>Não preciso anunciar que sou Rei. Não preciso convencer ninguém. Se um dia MUKA1998 voltar ao trono, o nível vai falar por ele. Até lá: Treinando. Errando. Aprendendo. Adaptando. Evoluindo. De novo e de novo.</p>
+        </div>
+
+        <!-- CONTEÚDO: DESCOBERTA -->
+        <div id="descoberta" class="tab-content">
+            <h2>💡 ABA DE DESCOBERTA & REGISTROS</h2>
+            <p>Use este espaço para colar nossas conversas com a IA, novas regras que você criar, ideias táticas ou logs diários. <strong>Tudo que você digitar aqui ficará salvo no seu navegador automaticamente ao clicar em Salvar.</strong></p>
+            
+            <textarea id="textoDescoberta" placeholder="Digite suas descobertas, novas regras ou histórico aqui..."></textarea>
+            <br>
+            <button class="btn-save" onclick="salvarDescoberta()">💾 Salvar Dados</button>
+            <span id="saveMessage">Salvo com sucesso!</span>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT PARA TROCAR ABAS E SALVAR DADOS -->
+    <script>
+        // Função para trocar as abas
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
-      }
 
-      appendMessage('user', displayHtml, true);
-      input.value = '';
+        // Sistema de salvamento da Aba Descoberta
+        const textarea = document.getElementById("textoDescoberta");
+        const saveMsg = document.getElementById("saveMessage");
 
-      if (!apiKey) {
-        appendMessage('assistant', '⚠️ Por favor, insira sua chave da API Gemini no campo à esquerda!');
-        return;
-      }
-
-      const parts = [];
-      if (messageText) parts.push({ text: SYSTEM_PROMPT + "\n\nUsuário diz: " + messageText });
-      else parts.push({ text: SYSTEM_PROMPT + "\n\nAnalise o arquivo anexado:" });
-
-      if (selectedFileBase64) {
-        parts.push({
-          inline_data: {
-            mime_type: selectedFileType,
-            data: selectedFileBase64
-          }
-        });
-      }
-
-      clearSelectedFile();
-      const loadingId = appendMessage('assistant', 'Analisando arquivo e pensando na tática...');
-
-      try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contents: [{ role: 'user', parts: parts }] })
-        });
-
-        const data = await response.json();
-        document.getElementById(loadingId)?.remove();
-
-        if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
-          appendMessage('assistant', data.candidates[0].content.parts[0].text);
-        } else {
-          appendMessage('assistant', '❌ Erro na resposta da API: ' + (data.error?.message || 'Verifique sua chave.'));
+        // Carregar dados salvos ao abrir a página
+        window.onload = function() {
+            const savedData = localStorage.getItem("muka1998_descobertas");
+            if (savedData) {
+                textarea.value = savedData;
+            }
         }
-      } catch (err) {
-        document.getElementById(loadingId)?.remove();
-        appendMessage('assistant', '❌ Erro ao conectar com a API.');
-      }
-    }
 
-    function appendMessage(role, textOrHtml, isHtml = false) {
-      const chatMessages = document.getElementById('chatMessages');
-      const msgDiv = document.createElement('div');
-      const id = 'msg-' + Date.now();
-      msgDiv.id = id;
-      msgDiv.className = `message ${role}`;
-      if (isHtml) msgDiv.innerHTML = textOrHtml;
-      else msgDiv.textContent = textOrHtml;
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      return id;
-    }
-  </script>
+        // Função para salvar no LocalStorage
+        function salvarDescoberta() {
+            const conteudo = textarea.value;
+            localStorage.setItem("muka1998_descobertas", conteudo);
+            
+            // Mostrar mensagem de sucesso
+            saveMsg.style.opacity = "1";
+            setTimeout(() => {
+                saveMsg.style.opacity = "0";
+            }, 2000);
+        }
+    </script>
+
 </body>
 </html>

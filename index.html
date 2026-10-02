@@ -120,7 +120,7 @@
                     <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">👑</div>
                     <div class="bg-fortnite-dark border border-gray-700 p-4 rounded-2xl max-w-2xl text-gray-200 shadow-inner">
                         <p class="font-bold text-yellow-400 mb-1 font-gaming">Coach MUKA1998</p>
-                        <p>Salve, Príncipe! Motor `gemini-3.8-flash` blindado com Fetch direto e sistema de Retry automático para erros 503 ativado. Qual é o foco do treino de hoje?</p>
+                        <p>Salve, Príncipe! Memória de conversa ativada (`previous_interaction_id`), motor `gemini-3.8-flash` e proteção contra erros 503 prontos. Qual é a call de hoje?</p>
                     </div>
                 </div>
             </div>
@@ -141,9 +141,10 @@
         Projeto MUKA1998 • O Trono Pertence ao Rei Absoluto.
     </footer>
 
-    <!-- SCRIPTS DE INTEGRAÇÃO COM A API DO GEMINI + RETRY PARA 503 -->
+    <!-- SCRIPTS DE INTEGRAÇÃO COM MEMÓRIA DE INTERAÇÃO E RETRY -->
     <script>
         const MODEL_NAME = 'gemini-3.8-flash';
+        let previousInteractionId = null; // Mantém o ID da última interação para garantir a memória da conversa
 
         window.onload = function() {
             if(localStorage.getItem('muka_api_key')) {
@@ -179,31 +180,29 @@
         }
 
         function clearChat() {
+            previousInteractionId = null; // Reseta a memória do histórico
             document.getElementById('chatMessages').innerHTML = `
                 <div class="flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">👑</div>
                     <div class="bg-fortnite-dark border border-gray-700 p-4 rounded-2xl max-w-2xl text-gray-200 shadow-inner">
                         <p class="font-bold text-yellow-400 mb-1 font-gaming">Coach MUKA1998</p>
-                        <p>Histórico reiniciado. Pronto para mais uma sessão de treinos rumo ao topo do Fortnite BR!</p>
+                        <p>Histórico e memória reiniciados. Pronto para mais uma sessão de treinos rumo ao topo do Fortnite BR!</p>
                     </div>
                 </div>
             `;
         }
 
-        // Função de fetch com suporte a tentativas automáticas (Retry) para erros temporários/503
+        // Função de fetch com suporte a tentativas automáticas (Retry) para erros 503/429
         async function fetchWithRetry(url, options, retries = 3, delay = 2000) {
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url, options);
-                    
-                    // Se der erro 503 (Service Unavailable) ou 429 (Too Many Requests), tenta de novo
                     if ((response.status === 503 || response.status === 429) && i < retries - 1) {
                         console.warn(`Tentativa ${i + 1} falhou com status ${response.status}. Tentando novamente em ${delay}ms...`);
                         await new Promise(resolve => setTimeout(resolve, delay));
-                        delay *= 2; // Backoff exponencial
+                        delay *= 2;
                         continue;
                     }
-                    
                     return response;
                 } catch (error) {
                     if (i === retries - 1) throw error;
@@ -246,6 +245,7 @@
             - Seja direto, analítico, altamente encorajador e trate-o sempre como o Rei absoluto que está conquistando o topo do Fortnite BR.
             `;
 
+            // Monta o payload incluindo o previous_interaction_id se houver histórico anterior
             const payload = {
                 contents: [
                     {
@@ -254,6 +254,10 @@
                     }
                 ]
             };
+
+            if (previousInteractionId) {
+                payload.previous_interaction_id = previousInteractionId;
+            }
 
             try {
                 const response = await fetchWithRetry(
@@ -272,6 +276,12 @@
                     appendMessage(`Erro da API: ${data.error.message} (Código: ${data.error.code})`, 'ai');
                 } else if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts) {
                     const aiReply = data.candidates[0].content.parts[0].text;
+                    
+                    // Armazena o ID da interação atual para o próximo turno manter a memória
+                    if (data.interaction_id) {
+                        previousInteractionId = data.interaction_id;
+                    }
+
                     appendMessage(aiReply, 'ai');
                 } else {
                     appendMessage('Erro estrutural na resposta da API. Verifique se sua chave da API é válida no Google AI Studio.', 'ai');

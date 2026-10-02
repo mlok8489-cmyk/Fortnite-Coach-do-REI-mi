@@ -1,42 +1,15 @@
 # 👑 Projeto: Transformar o Príncipe em Kyng
 
-> *"O Príncipe vai evoluir em silêncio absoluto até que o nível fale por ele e ele assuma o trono."*
+Central de comando tática, bloco de notas de descobertas do meta e inteligência artificial personalizada para alta performance no **Fortnite**.
 
----
+## 🚀 Funcionalidades da Central
+* **🤖 Kyng IA (Gemini 2.5 Flash):** Coach de inteligência artificial embutido para tirar dúvidas, analisar jogadas e acompanhar atualizações de patch notes e gírias do jogo.
+* **🎯 Treinos & Meta:** Widgets informativos focados em mecânica, posicionamento e inteligência de partida (otimizado para quem joga a 60Hz).
+* **📝 Anotar Descobertas:** Bloco de notas dinâmico integrado que salva automaticamente no navegador (`localStorage`) para registrar segredos de mapas, rotas de loot e novidades do meta.
+* **⚙️ Minhas Configurações:** Painel dedicado para salvar sensibilidade do mouse, resoluções, keybinds e a versão atual do meta do jogo.
+* **⚖️ Mindset:** Regras e leis inegociáveis para manter a consistência e evolução contínua.
 
-## 📌 Visão Geral do Projeto
-
-Este repositório abriga a central tática definitiva de alta performance desenvolvida para o jogador **MUKA1998** (*O Príncipe*). O ecossistema foi desenhado para eliminar distrações e guiar implacavelmente o jogador rumo ao topo global de Fortnite, convertendo-o no verdadeiro **Kyng**.
-
-A central traz embutida a **Kyng IA**, uma inteligência artificial otimizada com um design moderno e sistemas de conexão altamente estabilizados.
-
----
-
-## 🚀 O que há de Novo na Central
-
-*   **Design Cyber-Elite:** Interface escura, limpa e imersiva baseada em tons de azul escuro noturno com detalhes em amarelo dourado/âmbar.
-*   **Kyng IA Estabilizada:** O chat embutido agora conta com sistema automático de redundância de modelos da API do Google Gemini (`gemini-1.5-flash`, `gemini-1.5-pro` e `gemini-pro`), garantindo que nunca quebre por atualizações de versão.
-*   **Envio Ilimitado de Clipes via Link:** O usuário pode enviar links de suas jogadas (YouTube, Medal.tv, Twitch, Google Drive) e debater análises profundas de posicionamento e mira diretamente com o coach virtual.
-
----
-
-## ⚙️ Configuração Rápida da Kyng IA
-
-Para habilitar o cérebro da IA na sua página local:
-1. Acesse o [Google AI Studio](https://aistudio.google.com/app/apikey).
-2. Gere sua **API Key** gratuita.
-3. Abra o arquivo `muka1998.html` no navegador e cole a chave no campo indicado no topo da aba **Kyng IA** (a chave fica armazenada de forma segura exclusivamente no `localStorage` do seu próprio computador).
-
----
-
-## 📂 Estrutura da Central
-
-*   **🤖 Kyng IA:** O núcleo de mentoring e análise de clipes táticos.
-*   **Rotinas / Treinos:** Protocolos cirúrgicos de correção de mira (Tracking, Rifle, Doze). O erro dita o próximo treino.
-*   **Regras & Mindset:** A Regra da Desvantagem (60Hz) e a Regra dos 30 Dias.
-*   **Diário & Análise:** Registro pós-partida das falhas e acertos fundamentais.
-
----
-
-> *EU NÃO TENHO MEDO DE ERRAR. EU TENHO MEDO DE ERRAR E NÃO APRENDER.*  
-> **CONSISTÊNCIA. PACIÊNCIA. EVOLUÇÃO.**
+## 🛠️ Como Usar
+1. Abra o arquivo `muka1998.html` em qualquer navegador moderno (Chrome, Edge, Brave, etc.).
+2. Insira sua chave de API do Google Gemini na aba de chat ou configure seus dados na aba de **Configurações**.
+3. Utilize as abas superiores para alternar entre o chat, o painel de treinos, o bloco de anotações e suas configurações pessoais.

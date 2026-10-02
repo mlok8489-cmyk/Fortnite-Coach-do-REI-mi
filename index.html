@@ -232,7 +232,7 @@
 
     <div class="header">
         <h1>👑 Projeto: Transformar o Príncipe em Kyng</h1>
-        <p>Central de Comando Tático & Inteligência Artificial de Alta Performance</p>
+        <p>Central de Comando Tática & Inteligência Artificial de Alta Performance</p>
     </div>
 
     <div class="container">
@@ -252,7 +252,7 @@
             
             <div class="chat-container">
                 <div class="chat-box" id="chatBox">
-                    <div class="message msg-ai">👑 Salve, Príncipe. Aqui é a <strong>Kyng IA</strong>. Meu sistema está totalmente estabilizado e focado em um único propósito: lapidar cada erro seu até que você reine absoluto no topo do mundo. Envie links de clipes (Medal, YouTube, Drive) ou relate suas jogadas. Onde vamos focar hoje?</div>
+                    <div class="message msg-ai">👑 Salve, Príncipe. Aqui é a <strong>Kyng IA</strong>. Meu sistema está online com o modelo atualizado de alta performance. Envie links de clipes (Medal, YouTube, Drive) ou relate suas jogadas. Onde vamos focar hoje?</div>
                 </div>
                 <div class="chat-input-area">
                     <input type="text" id="chatInput" placeholder="Cole o link do seu clipe ou digite sua dúvida tática..." onkeypress="handleEnter(event)">
@@ -278,7 +278,7 @@
                 <li><strong>Zero Desculpas:</strong> 60Hz e delay não determinam o teto. O foco é dominar o que está sob o seu controle.</li>
                 <li><strong>Propósito Real:</strong> Cada sessão de treino deve ter um alvo claro de correção, nunca jogar por jogar.</li>
             </ul>
-            <h3>⚔️ REGRA DA DESVANTAGEM</h3>
+            <h3>⚔️️ REGRA DA DESVANTAGEM</h3>
             <p>O adversário tem o melhor setup do mercado? Perfeito. Jogue de forma mais inteligente, fria e letal dentro das suas limitações.</p>
             <h3>📈 REGRA DOS 30 DIAS</h3>
             <p>Nunca julgue seu progresso por uma partida ruim isolada. A única métrica válida é: *Eu hoje comparado a mim mesmo há 30 dias*.</p>
@@ -362,14 +362,14 @@
             sendBtn.textContent = 'Processando...';
 
             try {
-                // Atualizado para usar os modelos mais modernos disponíveis na API v1beta
-                let data = await fetchWithModel('gemini-2.5-flash', apiKey, systemPrompt);
+                // Tentativa com os IDs atuais mais recentes da API v1beta
+                let data = await fetchWithModel('gemini-3.8-flash', apiKey, systemPrompt);
                 
                 if (data.error) {
-                    data = await fetchWithModel('gemini-2.0-flash', apiKey, systemPrompt);
+                    data = await fetchWithModel('gemini-3.7-flash', apiKey, systemPrompt);
                 }
                 if (data.error) {
-                    data = await fetchWithModel('gemini-1.5-flash', apiKey, systemPrompt);
+                    data = await fetchWithModel('gemini-2.5-flash', apiKey, systemPrompt);
                 }
 
                 if (data.error) {

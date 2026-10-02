@@ -120,7 +120,7 @@
                     <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-fortnite-dark font-black font-gaming flex-shrink-0">👑</div>
                     <div class="bg-fortnite-dark border border-gray-700 p-4 rounded-2xl max-w-2xl text-gray-200 shadow-inner">
                         <p class="font-bold text-yellow-400 mb-1 font-gaming">Coach MUKA1998</p>
-                        <p>Salve, Príncipe! O sistema está blindado e pronto. Como foi o treino de mira hoje? Qual é o foco da partida de agora rumo ao topo do Fortnite BR? Mande a call e vamos dominar o lobby!</p>
+                        <p>Salve, Príncipe! O sistema foi atualizado para o modelo moderno e está 100% blindado. Como foi o treino de mira hoje? Qual é o foco da partida rumo ao topo do Fortnite BR?</p>
                     </div>
                 </div>
             </div>
@@ -143,8 +143,8 @@
 
     <!-- SCRIPTS DE INTEGRAÇÃO COM A API DO GEMINI -->
     <script>
-        const MODEL_NAME = 'gemini-1.5-flash';
-        let chatHistory = [];
+        // Utilizando o modelo atualizado padrão
+        const MODEL_NAME = 'gemini-2.5-flash';
 
         // Carregar dados salvos ao iniciar
         window.onload = function() {
@@ -190,7 +190,6 @@
                     </div>
                 </div>
             `;
-            chatHistory = [];
         }
 
         async function sendMessage() {
@@ -231,7 +230,6 @@
             - Seja direto, analítico, altamente encorajador e trate-o sempre como o Rei absoluto que está conquistando o topo do Fortnite BR.
             `;
 
-            // Estrutura limpa de contents compatível com o Gemini API
             const payload = {
                 contents: [
                     {
